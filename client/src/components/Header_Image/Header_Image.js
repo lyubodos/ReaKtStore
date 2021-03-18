@@ -1,4 +1,6 @@
-import mkCover from "../images/mk11.jpg"
+import mkCover from "../../images/mk11.jpg"
+import "./Header_Image.css"
+
 
 export default function() {
     return (

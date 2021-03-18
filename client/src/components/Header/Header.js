@@ -1,4 +1,6 @@
-function Heading(props){
+import "./Header.css";
+
+function Header(props){
 
     return (
         <header class="header">
@@ -14,12 +16,14 @@ function Heading(props){
                     <li><a href="">About</a></li>
                     <li><a href="">Katalog</a></li>
                     <li><a href="">Best Offers</a></li>
-                    <li><a href="">Kontants</a></li>
+                    <li><a href="">Kontants</a></li>       
                 </ul>
+                
             </nav>
+            
         </header>      
+  
     );
-
 }
 
-export default Heading;
+export default Header;
