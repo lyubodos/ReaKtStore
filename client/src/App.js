@@ -1,9 +1,12 @@
 
+import { Route, Switch} from "react-router-dom";
+
 import Header from "./components/Header"
 import Header_Image from "./components/Header_Image";
+import Catalog from "./components/Catalog";
 import Main from "./components/Main";
-import Features from "./components/Features";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+
 
 import './App.css';
 
@@ -12,8 +15,13 @@ function App() {
     <div className="App">
       <Header />
       <Header_Image/>
-      <Main/>
-      <Features/>
+
+      <Switch>
+        <Route path="/" exact component={Main}></Route>
+        <Route path="/catalog" component={Catalog}></Route>
+      </Switch>
+    
+
       <Footer/>
     </div>
   );
