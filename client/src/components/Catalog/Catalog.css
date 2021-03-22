@@ -1,7 +1,7 @@
 .catalog h1{
   font-family: 'Chango', cursive;
   font-size: 40px;
-  color: #E89F16;
+  color: #CC781F;
   text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 }
 
@@ -31,6 +31,8 @@
 
 .games button a {
     text-decoration: none;
+    color: white;
+
 }
 
  .game button {

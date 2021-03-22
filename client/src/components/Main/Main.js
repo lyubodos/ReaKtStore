@@ -1,11 +1,13 @@
 import "./Main.css";
 
 import Features from "../Features"
+import Header_Image from "../Header_Image"
 
 
 function Main (){
     return(
         <main className="main-content">
+            <Header_Image/>
             <section class="main-info-page">
                 <h1>Welcome to the latest startup project of SmartFox &copy; </h1>
                 <p>In this small(for now) store you can try and find all of your favourite games and titles.</p>

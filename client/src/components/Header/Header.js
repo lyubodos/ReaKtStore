@@ -1,5 +1,8 @@
 import "./Header.css";
 
+
+import { NavLink } from "react-router-dom"
+
 function Header(props){
 
     return (
@@ -7,20 +10,20 @@ function Header(props){
         <h1 class="header-title">ReaKt Store</h1>
             <nav>
                 <ul class="header-reg">
-                    <li><a href="">Login</a></li>
-                    <li><a href="">Sign-Up</a></li>
+                    <li><NavLink to ="">Login</NavLink></li>
+                    <li><NavLink to ="">Sign-Up</NavLink></li>
                 </ul>
             
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Katalog</a></li>
-                    <li><a href="">Best Offers</a></li>
-                    <li><a href="">Kontants</a></li>       
+                    <li><NavLink to ="/">Home</NavLink></li>
+                    <li><NavLink to ="/about">About</NavLink></li>
+                    <li><NavLink to ="/catalog">Katalog</NavLink></li>
+                    <li><NavLink to ="/offers">Best Offers</NavLink></li>
+                    <li><NavLink to ="/contacts">Kontants</NavLink></li>       
                 </ul>
                 
             </nav>
-            
+           
         </header>      
   
     );

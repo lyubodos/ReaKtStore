@@ -1,10 +1,14 @@
 import "./Catalog.css";
 
+import CatalogNav from "./CatalogNav"
+
 import { NavLink } from "react-router-dom"
 
 const Catalog = () => {
     return (
         <section className="catalog">
+            <CatalogNav/>
+            
             <h1>All Games</h1>
             <div className="games">
                 <div className="game">

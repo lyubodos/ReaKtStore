@@ -1,0 +1,18 @@
+.catalog nav {
+
+    width: 50%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.catalog li{
+    position: relative;
+    margin: 0 36px;
+
+}
+
+
+.catalog-nav a{
+
+
+}
