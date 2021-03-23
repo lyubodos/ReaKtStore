@@ -1,8 +1,10 @@
 import "./SuggestButton.css";
 
+import { Link } from "react-router-dom";
+
 const SuggestButton = () => {
     return(
-        <a href="" class="main-btn">Suggest a game</a>
+        <Link to="/suggestgame" class="main-btn">Suggest a game</Link>
     );
 
 }

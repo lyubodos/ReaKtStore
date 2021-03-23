@@ -1,55 +1,60 @@
 import "./Catalog.css";
 
-import CatalogNav from "./CatalogNav"
+import CatalogNav from "./CatalogNav";
+import Game from "../Game"
+import * as gamesService from "../../services/GamesService"
 
-import { NavLink } from "react-router-dom"
+import { Component } from "react"
 
-const Catalog = () => {
-    return (
-        <section className="catalog">
-            <CatalogNav/>
+
+class Catalog extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            games: [],
+            currentCategory: "all"
+        }
+    }
+
+    componentDidMount() {
+        gamesService.getAll()
+            .then(res => this.setState({ games: res }))
+    }
+
+    // componentDidUpdate(){
+    //     const categpry = this.props.match.params.category
             
-            <h1>All Games</h1>
-            <div className="games">
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
+    //     if (prevProps.match.params.category === categpry){
+    //         return;
+    //     }
+
+    //     gamesService.getAll(categpry)
+    //         .then(res => {
+    //             this.setState({pets: res, currentCategory: categpry});
+    //         })
+    // }
+
+    render() {
+        console.log(this.state.games);
+        return (
+            <section className="catalog">
+                <CatalogNav />
+                <h1>All Games</h1>
+
+                <div className="games">
+                {
+                        this.state.games.map(x => 
+                            <Game key={x.id} {...x} />
+                        )
+                }
+                  
                 </div>
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
-                </div>
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
-                </div>
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
-                </div>
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
-                </div>
-                <div className="game">
-                    <h2>Mortal Kombat 11</h2>
-                    <img src="https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg" />
-                    <button><NavLink to="">Buy Game</NavLink></button>
-                    <button><NavLink to="">Details</NavLink></button>
-                </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    };
+
+
 }
 
 export default Catalog;

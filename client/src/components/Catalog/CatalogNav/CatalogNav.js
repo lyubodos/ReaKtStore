@@ -4,14 +4,14 @@ import { NavLink } from "react-router-dom"
 
 const CatalogNav = () => {
     return(
-        <nav className="catalog-categories">
-            <ul className="catalog-nav">
+        <nav className="/catalog-categories">
+            <ul className="/catalog-nav">
                 <li><NavLink to="/catalog">All categories</NavLink></li>
-                <li><NavLink to="catalog">Action</NavLink></li>
-                <li><NavLink to="catalog">Adventures</NavLink></li>
-                <li><NavLink to="catalog">Horror</NavLink></li>
-                <li><NavLink to="catalog">Logical</NavLink></li>
-                <li><NavLink to="catalog">Kids</NavLink></li>
+                <li><NavLink to="/catalog/:id">Action</NavLink></li>
+                <li><NavLink to="/catalog/:id">Adventures</NavLink></li>
+                <li><NavLink to="/catalog/:id">Horror</NavLink></li>
+                <li><NavLink to="/catalog/:id">Logical</NavLink></li>
+                <li><NavLink to="/catalog/:id">Other    </NavLink></li>
             </ul>
             <style jsx>{`
               
