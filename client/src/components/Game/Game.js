@@ -6,7 +6,8 @@ const Game = ({
     id,
     title,
     likes,
-    imageURL
+    imageURL,
+    price
     
 }) => {
     return (
@@ -16,6 +17,15 @@ const Game = ({
             <button><NavLink to="">Buy Game</NavLink></button>
             <button><NavLink to={`/games/details/${id}`}>Details</NavLink></button>
             <p>Likes: {likes}</p>
+            <p>Price: {price}</p>
+            <style jsx>
+                {
+                    `
+                    p{ margin: 6px; }
+                    
+                    `
+                }
+            </style>
         </div>
 
     )

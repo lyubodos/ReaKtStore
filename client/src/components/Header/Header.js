@@ -10,8 +10,8 @@ function Header(props){
         <h1 class="header-title">ReaKt Store</h1>
             <nav>
                 <ul class="header-reg">
-                    <li><NavLink to ="">Login</NavLink></li>
-                    <li><NavLink to ="">Sign-Up</NavLink></li>
+                    <li><NavLink to ="/login">Login</NavLink></li>
+                    <li><NavLink to ="/register">Sign-Up</NavLink></li>
                 </ul>
             
                 <ul>

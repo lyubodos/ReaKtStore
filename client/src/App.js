@@ -1,7 +1,9 @@
 
 import { Route, Switch} from "react-router-dom";
 
-import Header from "./components/Header"
+import Header from "./components/Header";
+import Login from "./components/Authentication/Login";
+import Register from "./components/Authentication/Register";
 import Catalog from "./components/Catalog";
 import About from "./components/About"
 import Main from "./components/Main";
@@ -10,6 +12,8 @@ import Footer from "./components/Footer";
 
 import './App.css';
 import SuggestGame from "./components/SuggestButton/SuggestGame./SuggestGame";
+import GameDetails from "./components/Game/GameDetails/GameDetails";
+
 
 function App() {
   return (
@@ -18,9 +22,13 @@ function App() {
 
       <Switch>
         <Route path="/" exact component={Main}></Route>
-        <Route path="/catalog" component={Catalog}></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/register" component={Register}></Route>
+        <Route path="/catalog"   component={Catalog}></Route>
+        {/* <Route path="/catalog/:category"  component={Catalog}></Route> */}
         <Route path="/about" component={About}></Route>
         <Route path="/suggestgame" component={SuggestGame}></Route>
+        <Route path="/games/details/:gameId" component={GameDetails}></Route>
       </Switch>
     
       <Footer/>

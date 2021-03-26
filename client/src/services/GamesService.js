@@ -1,20 +1,25 @@
 /*Basic fetch function for testing pruposes*/
 
-const baseUrl = "http://localhost:5000";
+let url = "http://localhost:5000/games";
 
-let extension = "";
 
-export const getAll = () => {
-   return fetch(`${baseUrl}/games`)
-    .then(res => res.json())
-    .catch(err => console.log(err))
+export const getAll = (category = '') =>{
+
+
+    url += (category && category !== "all")
+    ? `?category=${category}`
+    : "";
+
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => console.log(err));
+
 }
-
 
 
 export const getOne = (gameId) => {
 
-    return fetch(`${baseUrl}/${gameId}`)
+    return fetch(`${url}/${gameId}`)
     .then(res => res.json())
     .catch(err => console.log(err));
 }

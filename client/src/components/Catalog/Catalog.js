@@ -1,8 +1,9 @@
 import "./Catalog.css";
 
+import * as gamesService from "../../services/GamesService"
 import CatalogNav from "./CatalogNav";
 import Game from "../Game"
-import * as gamesService from "../../services/GamesService"
+
 
 import { Component } from "react"
 
@@ -18,24 +19,27 @@ class Catalog extends Component {
     }
 
     componentDidMount() {
+      
         gamesService.getAll()
             .then(res => this.setState({ games: res }))
     }
 
-    // componentDidUpdate(){
-    //     const categpry = this.props.match.params.category
+    componentDidUpdate(prevProps, prevState) {
+        let category = this.props.match.params.category
             
-    //     if (prevProps.match.params.category === categpry){
-    //         return;
-    //     }
+        if (prevProps.match.params.category === category){
+            return;
+        }
 
-    //     gamesService.getAll(categpry)
-    //         .then(res => {
-    //             this.setState({pets: res, currentCategory: categpry});
-    //         })
-    // }
+        gamesService.getAll(category)
+            .then(res => {
+                this.setState({games: res, currentCategory: category});
+            })
+           
+    }
 
     render() {
+
         console.log(this.state.games);
         return (
             <section className="catalog">
@@ -48,13 +52,10 @@ class Catalog extends Component {
                             <Game key={x.id} {...x} />
                         )
                 }
-                  
                 </div>
             </section>
         );
     };
-
-
 }
 
 export default Catalog;

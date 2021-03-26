@@ -15,10 +15,9 @@ const GameDetails = ({
     }, [match]);
 
     return (
-        <section className="detailsGame">
+        <section className="details">
             <h3>{game.title}</h3>
-            <p>Likes: {game.likes} <a href="#"><button class="button"><i class="fas fa-heart"></i>
-                    Pet</button></a>
+            <p>Likes: {game.likes}<button class="button">Like</button>
             </p>
             <p class="img"><img src={game.imageURL} /></p>
             <p class="description">{game.description}</p>
