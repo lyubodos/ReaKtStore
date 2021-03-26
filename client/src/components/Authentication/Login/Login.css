@@ -1,17 +1,16 @@
 .nav-login{
     margin: 40px auto;
     font-family: 'Chango', cursive;
-    color: #CB3F3F;
+   
 }
 
 form {
     display: grid;
     width: 25%;
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
     color: white;
     font-weight: bold;
-   
   }
 
 
@@ -34,6 +33,12 @@ form > input[type=submit]:nth-child(5){
     top: 30%;
   }
 
+form label {
+    color: #CB3F3F;
+    margin-bottom: 4px;
+    font-size: 28px;
+}
+
 form > label:nth-child(3){
     margin-top: 10px;
     text-align: center;
@@ -42,4 +47,4 @@ form > label:nth-child(3){
 
 form > input[type=submit]:nth-child(5):active{
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-  }
+}

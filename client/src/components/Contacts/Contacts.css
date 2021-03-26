@@ -1,0 +1,18 @@
+.contacts{
+    display: flex;
+    flex: wrap;
+    justify-content: space-between;
+    padding: 100px;
+}
+
+.contacts ul{
+    position: relative;
+}
+.contacts li{
+    list-style: none;
+}
+
+.contacts li a{
+    text-decoration: none;
+    color: wheat
+}

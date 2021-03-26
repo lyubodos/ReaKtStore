@@ -14,6 +14,10 @@ form {
    
 }
 
+form label{
+    font-size: 28px;
+}
+
 form > label:nth-child(3){
     margin-top: 30px;
 }
@@ -42,5 +46,10 @@ form > input[type=submit]:nth-child(7){
     top: 30%;
 }
 
+
+form > input[type=submit]:nth-child(7):active{
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+
+}
 
 

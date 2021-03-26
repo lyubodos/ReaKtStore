@@ -1,16 +1,16 @@
 /*Basic fetch function for testing pruposes*/
 
-let url = "http://localhost:5000/games";
+let baseUrl = "http://localhost:5000/games";
 
 
 export const getAll = (category = '') =>{
 
 
-    url += (category && category !== "all")
+    baseUrl += (category && category !== "all")
     ? `?category=${category}`
     : "";
 
-    return fetch(url)
+    return fetch(baseUrl)
         .then(res => res.json())
         .catch(err => console.log(err));
 
@@ -19,7 +19,7 @@ export const getAll = (category = '') =>{
 
 export const getOne = (gameId) => {
 
-    return fetch(`${url}/${gameId}`)
+    return fetch(`${baseUrl}/${gameId}`)
     .then(res => res.json())
     .catch(err => console.log(err));
 }
