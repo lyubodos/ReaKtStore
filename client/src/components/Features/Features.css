@@ -10,7 +10,6 @@
 
 .feature-title{
     color: white;
-    /* border-bottom: 1px solid lightgray; */
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
@@ -18,7 +17,7 @@
 
 .feature-text{
     color: #7b7676;
-    padding: 0 60px;
+    padding: 0 80px;
     
 }
 

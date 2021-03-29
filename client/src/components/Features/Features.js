@@ -5,9 +5,6 @@ import {Link} from 'react-router-dom';
 
 function Features(){
 
-    // supportBtnHandler(){
-
-    // }
 
     return(
         <section  className="features">

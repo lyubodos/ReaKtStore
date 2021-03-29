@@ -1,0 +1,17 @@
+.feedback{
+    font-family: 'Chango', cursive;
+    color: ivory;
+}
+
+.feedback legend{
+    color: #CB3F3F;
+}
+
+.feedback img{
+    border-radius: 3%;
+    opacity: 80%;
+}
+
+.feedback p{
+    font-size: 30px;
+}

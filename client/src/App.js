@@ -6,14 +6,17 @@ import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
 import Catalog from "./components/Catalog";
 import Contacts from "./components/Contacts"
+import './App.css';
+
 import About from "./components/About"
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 
-import './App.css';
-import SuggestGame from "./components/SuggestButton/SuggestGame./SuggestGame";
-import GameDetails from "./components/Game/GameDetails/GameDetails";
+
+import SuggestGame from "./components/SuggestGame/";
+import GameDetails from "./components/Game/GameDetails";
+import Feedback from "./components/Feedback";
 
 
 function App() {
@@ -31,8 +34,9 @@ function App() {
 
         <Route path="/about" component={About}></Route>
         <Route path="/contacts" component={Contacts}></Route>
-        
+
         <Route path="/suggestgame" component={SuggestGame}></Route>
+        <Route path="/feedback" component={Feedback}></Route>
         <Route path="/games/details/:gameId" component={GameDetails}></Route>
       </Switch>
     

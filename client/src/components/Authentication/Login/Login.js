@@ -1,12 +1,26 @@
 import "./Login.css"
+import gateImg from "../../../images/mk_gate.jpg"
 
 const Login = () => {
 
+
+    function onLoginAttempt(e){
+        e.preventDefault();
+        
+        const {username, password} = e.target;
+
+        
+
+        console.log(username.value, password.value);
+
+    }
+
     return(
         <div className="nav-login">
-        <img  src="https://i.pinimg.com/474x/76/f3/75/76f3758415130adfdd6eebfe855c9430.jpg"/>
-       
-        <form>
+        <h1>Log into our realm and begin your journey!</h1>
+        <img src={gateImg} alt="gateImg"/>
+        
+        <form onSubmit={onLoginAttempt}>
             <label htmlFor="username">Username</label>
             <input type="text" name="username" id="loginUsername"/>
             <label htmlFor="username">Password</label>

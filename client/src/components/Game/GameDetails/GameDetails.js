@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 
 import * as gamesService from "../../../services/GamesService";
+import ButtonTemp from "../../Shared/Button"
+
 
 
 const GameDetails = ({
@@ -34,11 +36,11 @@ const GameDetails = ({
                     <div className="details-tabs-el">
                     <Link>Reviews</Link>
                     <p>This game is awesome</p>
-                    <button>Leave a review</button>
+                    <ButtonTemp>Leave a review</ButtonTemp>
                     </div>
                 </div>
             </div>
-            <button className="button">Like<i class="fas fa-hand-rock"></i></button>
+            <ButtonTemp className="button">Like<i class="fas fa-hand-rock"></i></ButtonTemp>
 
         </section>
     );

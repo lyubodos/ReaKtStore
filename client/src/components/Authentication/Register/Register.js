@@ -5,8 +5,9 @@ const Register = () => {
     
     return(
         <div className="nav-register">
-        <img  src="https://www.legalzoom.com/sites/lz.com/files/articles/how_to_register_a_business.jpg"/>
-       
+        <h1 className="reg-title">Sign Up NOW!</h1>
+        <p className="reg-description">Do not have an account?<br></br> Make a pact with us providing Your data, which You can make sure that we will protect and not share with 3rd parties!<br></br>Register now and begin your konquest</p>
+        <img  src="https://i.redd.it/fzunfh2r7hj21.png"/>
         <form>
             <label htmlFor="username">Username</label>
             <input type="text" name="username" id=""/>

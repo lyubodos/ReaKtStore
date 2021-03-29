@@ -1,17 +1,22 @@
 .nav-register{
     margin: 40px auto;
     font-family: 'Chango', cursive;
-    color: #CB3F3F;
+    color: #73ac36
 }
 
-form {
+.nav-register form {
     display: grid;
     width: 23%;
     margin: 0 auto;
     text-align: center;
-    color: white;
     font-weight: bold;
-   
+    color: #73ac36;
+    margin: 40px auto;
+}
+
+.reg-description{
+    font-size: 22px;
+    line-height: 2;
 }
 
 form label{

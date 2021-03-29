@@ -9,13 +9,16 @@ header{
   .header-title{
     position: relative;
     font-family: "M PLUS 1p", sans-serif;
-    background: #FEC940;
     color: grey;
     margin:auto;
     font-size: 40px;  
     text-shadow: 1px 1px #FDFCF4;
+    display: inline-block;
   }
   
+  header h3{
+    display: inline-block;
+  }
   
   .header-title:hover{
     text-shadow: 2px 2px #ff0000;
@@ -65,3 +68,16 @@ header{
     opacity: 40%;
   }
   
+
+  .header-wlc{
+    font-family: "M PLUS 1p", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    background: #FEC940;;
+  }
+
+  .header-logout{
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 15px;
+  }
