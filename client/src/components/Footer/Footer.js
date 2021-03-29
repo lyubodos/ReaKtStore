@@ -5,7 +5,7 @@ function Footer() {
     return(
         <footer>
         <p>
-            Smart Fox &copy;  ALL RIGHTS RESERVED.  | DESIGN BY <a href="">Smart Fox Design</a>.
+            Smart Fox &copy;  ALL RIGHTS RESERVED.  | DESIGN BY <a href="https://xenodochial-blackwell-6396b1.netlify.app/#the-begining">Smart Fox Design</a>.
         </p>
        </footer>
     );

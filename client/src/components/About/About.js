@@ -10,7 +10,7 @@ const About = () => {
             </div>
             <div>
                 <h1>ReaKt Store</h1>
-                <p>ReaKt Store is one of the latest projects of the official web designing company - <strong>SmartFox</strong>&copy;.<br/>Here You can browse, review and even buy some of your favourite games.
+                <p>ReaKt Store is one of the latest projects of the official web designing company - <a href="https://xenodochial-blackwell-6396b1.netlify.app/#the-begining"><strong>SmartFox</strong>&copy;.</a><br/>Here You can browse, review and even buy some of your favourite games.
                     From the very begining of this project, we made a pact to bend to the end-customer's viewpoint and to implement almost everything , which we receive as feedback.<br/>
                     If You have any questions or thoughs on the current performance or design of the site, please do not hesitate to leave an opinnion before leaving our store.
                 </p>
