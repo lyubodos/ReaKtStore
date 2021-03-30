@@ -25,7 +25,7 @@ class Catalog extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        let category = this.props.match.params.category
+        let category = this.props.match.params.category;
             
         if (prevProps.match.params.category === category){
             return;

@@ -27,7 +27,6 @@ const Game = ({
                 }
             </style>
         </div>
-
     )
 }
 

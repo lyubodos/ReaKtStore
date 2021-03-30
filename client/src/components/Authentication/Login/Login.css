@@ -4,6 +4,14 @@
     color: #FEC940;
 }
 
+
+.nav-login a{
+  text-decoration: none;
+  color:ivory;
+}
+
+
+
 form {
     display: grid;
     width: 25%;
@@ -47,4 +55,8 @@ form > label:nth-child(3){
 
 form > input[type=submit]:nth-child(5):active{
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+}
+
+.signup-link{
+  margin-top: 25px;
 }

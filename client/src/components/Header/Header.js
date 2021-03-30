@@ -1,9 +1,13 @@
 import "./Header.css";
 
 
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+
+import { useAuth } from "../Authentication/AuthContext";
 
 function Header() {
+
+    // const {currentUser} = useAuth();
 
     return (
         <header class="header">
