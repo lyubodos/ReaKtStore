@@ -3,8 +3,8 @@ import "./Register.css";
 import {useRef, useState} from "react";
 import { useAuth} from "../AuthContext";
 
-import {Link} from "react-router-dom";
-import InputError from "../../Shared/InputError/InputError";
+import {Link , useHistory} from "react-router-dom";
+import Notification from "../../Shared/Notification";
 
 
 const Register = () => {
@@ -17,6 +17,7 @@ const Register = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false)
 
+    const history = useHistory();
 
     async function submitHandler(e){
         e.preventDefault();
@@ -30,6 +31,7 @@ const Register = () => {
         setError('');
         setLoading(true);
           await signup(emailRef.current.value, passRef.current.value);
+          history.push("/catalog");
 
         } catch {
             setError('Failed to create an account')
@@ -40,10 +42,11 @@ const Register = () => {
     return(
 
         <div className="nav-register">
+        {error && <Notification>{error}</Notification>}
         <h1 className="reg-title">Sign Up NOW!</h1>
-        <p className="reg-description">Do not have an account?<br></br> Make a pact with us providing Your data, which You can make sure that we will protect and not share with 3rd parties!<br></br>Register now and begin your konquest</p>
+        <p className="reg-description">Make a pact with us providing Your data, which You can make sure that we will protect and not share with 3rd parties!<br></br>Register now and begin your Konquest</p>
         <img  src="https://i.redd.it/fzunfh2r7hj21.png"/>
-        {currentUser.email}
+
         <form onSubmit={submitHandler}>
             <label htmlFor="email">E-mail</label>
             <input type="email" name="email" ref={emailRef} id=""/>
@@ -55,7 +58,6 @@ const Register = () => {
             <input type="submit" disabled={loading} value="Sign Up"/>
             
         </form>
-        {error && <InputError>{error}</InputError>}
         <p className="signup-link">Already have an account? <Link to="/login">Log In NOW!</Link></p>
         </div>
        

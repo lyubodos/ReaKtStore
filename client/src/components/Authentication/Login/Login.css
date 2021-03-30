@@ -41,6 +41,12 @@ form > input[type=submit]:nth-child(5){
     top: 30%;
   }
 
+  
+form > input[type=submit]:nth-child(5):active{
+  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+}
+
+
 .nav-login form label {
     color: #FEC940;
     margin-bottom: 4px;
@@ -53,10 +59,16 @@ form > label:nth-child(3){
   }
  
 
-form > input[type=submit]:nth-child(5):active{
-    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-}
-
 .signup-link{
   margin-top: 25px;
+}
+
+.nav-login i {
+  margin-top: 20px;
+  font-size: 50px;
+  color: #F50;
+}
+
+.forgotPass{
+  margin-top: 10px;    
 }

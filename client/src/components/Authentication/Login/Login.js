@@ -3,9 +3,9 @@ import gateImg from "../../../images/mk_gate.jpg";
 
 
 import {useRef, useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import InputError from "../../Shared/InputError/InputError";
+import Notification from "../../Shared/Notification";
 
 import { useAuth } from "../AuthContext";
 
@@ -19,6 +19,7 @@ const Login = () => {
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
   
 
     async function submitHandler(e){
@@ -28,6 +29,7 @@ const Login = () => {
         setError('');
         setLoading(true);
           await login(emailRef.current.value, passRef.current.value);
+          history.push("/catalog")
 
         } catch {
             setError('Failed to sign in')
@@ -39,6 +41,7 @@ const Login = () => {
     return(
         <div className="nav-login">
         <h1>Log into our realm and begin your journey!</h1>
+        {error && <Notification>{error}</Notification>}
         <img src={gateImg} alt="gateImg"/>
         
         <form onSubmit={submitHandler}>
@@ -48,7 +51,10 @@ const Login = () => {
             <input type="password" name="password" ref={passRef} id="loginPassword"/>
             <input type="submit" disabled={loading} value="Login"/>
         </form>
-        {error && <InputError>{error}</InputError>}
+            <Link className="forgotPass" to="/forgotpassword">Forgot Password</Link>
+       
+
+        {error && <i class="fas fa-level-down-alt"></i>}
         <p className="signup-link">Do not have an account? <Link to="/register">Sign Up</Link></p>
         </div>
     )

@@ -18,9 +18,17 @@ export function AuthProv({children}) {
         auth.createUserWithEmailAndPassword(email, password)
     }
 
+    function resetPassword(email){
+        return auth.sendPasswordResetEmail(email);
+    }
+
     
     function login(email, password){
         return auth.signInWithEmailAndPassword(email, password);
+    }
+
+    function logout(){
+        return auth.signOut();
     }
 
     useEffect(()=>{
@@ -36,7 +44,9 @@ export function AuthProv({children}) {
     const value = {
         currentUser,
         login,
-        signup
+        signup,
+        resetPassword,
+        logout
         
     }
 

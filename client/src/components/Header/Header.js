@@ -1,20 +1,40 @@
 import "./Header.css";
 
-
-import { NavLink } from "react-router-dom";
+import {useState} from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
 import { useAuth } from "../Authentication/AuthContext";
 
+import Notification from "../Shared/Notification";
+
 function Header() {
 
-    // const {currentUser} = useAuth();
+    const {logout, currentUser} = useAuth();
+    const [error, setError] = useState("");
+
+    const history = useHistory();
+
+    async function logoutHandler(){
+
+        setError('')
+
+        try {
+            await logout();
+            history.push("/login");
+        } catch {
+            setError("Failed to log out");
+        }
+    }
 
     return (
         <header class="header">
             <div className="header-wlc"> 
-                <h3>Welcome, Lyubodos</h3>
+                {currentUser ? <h3>Welcome, {currentUser.email}</h3> : ""}
                 <h1 class="header-title">ReaKt Store</h1>
-                <NavLink className="header-logout" to="">Logout</NavLink>
+                {currentUser 
+                ?  <button className="header-logout" onClick={logoutHandler}>Logout</button>
+                : ""}
+               
             </div>
 
             <nav>
@@ -31,7 +51,9 @@ function Header() {
                     <li><NavLink to="/contacts">Kontants</NavLink></li>
                 </ul>
             </nav>
+            {error && <Notification>{error}</Notification>}
         </header>
+        
     );
 }
 

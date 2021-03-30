@@ -1,4 +1,9 @@
 .contacts{
+    text-align: center;
+}
+
+
+.contacts-wrapper{
     display: flex;
     flex: wrap;
     justify-content: space-between;
@@ -15,4 +20,8 @@
 .contacts li a{
     text-decoration: none;
     color: wheat
+}
+
+.contacts-mainImg{
+    border-radius: 4%;
 }
