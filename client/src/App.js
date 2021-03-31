@@ -16,12 +16,13 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 
-
 import SuggestGame from "./components/SuggestGame/";
 import GameDetails from "./components/Game/GameDetails";
 import Feedback from "./components/Feedback";
 import { AuthProv } from "./components/Authentication/AuthContext";
 import ForgotPassword from "./components/Authentication/ForgotPassword";
+import ProfileUp from "./components/Authentication/ProfileUp";
+import Profile from "./components/Profile";
 
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
 
       <Switch>
         <PrivateRoute exact path="/offers" component={Offers} />
+        <PrivateRoute path="/profile" component={Profile}/>
+        <PrivateRoute exact path="/profile-update" component={ProfileUp}/>
+  
+        
 
         <Route path="/" exact component={Main}></Route>
         <Route path="/register" component={Register}></Route>

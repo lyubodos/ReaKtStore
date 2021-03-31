@@ -81,3 +81,17 @@ header{
     font-size: 20px;
     margin-top: 15px;
   }
+
+  .login-wrapper{
+    display: flex;
+  }
+
+  header i {
+   margin-right: 4px;
+  }
+
+  
+  header i:active {
+    opacity: 50%;
+    margin-right: 4px;
+   }

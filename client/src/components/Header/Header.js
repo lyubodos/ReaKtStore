@@ -1,11 +1,11 @@
+import { useState } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
+import { useAuth } from "../Authentication/AuthContext";
+import Notification from "../Shared/Notification";
 import "./Header.css";
 
-import {useState} from "react";
-import { NavLink, useHistory } from "react-router-dom";
 
-import { useAuth } from "../Authentication/AuthContext";
 
-import Notification from "../Shared/Notification";
 
 function Header() {
 
@@ -16,7 +16,7 @@ function Header() {
 
     async function logoutHandler(){
 
-        setError('')
+        setError('');
 
         try {
             await logout();
@@ -26,23 +26,33 @@ function Header() {
         }
     }
 
+    // function profileHandler(){
+       
+    //     setError('');
+
+    //     try{
+    //         history.push("/profile");
+    //     } catch {
+    //         setError("Failed to log into settings page");
+    //     }
+    // }
+
+
+
     return (
         <header class="header">
             <div className="header-wlc"> 
                 {currentUser ? <h3>Welcome, {currentUser.email}</h3> : ""}
                 <h1 class="header-title">ReaKt Store</h1>
-                {currentUser 
-                ?  <button className="header-logout" onClick={logoutHandler}>Logout</button>
-                : ""}
-               
             </div>
 
             <nav>
-                <ul class="header-reg">
-                    <li><NavLink to="/login">Login</NavLink></li>
-                    <li><NavLink to="/register">Sign-Up</NavLink></li>
-                </ul>
-
+                {
+                    currentUser 
+                    ? <ul class="header-reg"><li><NavLink onClick={logoutHandler} to="/">Logout</NavLink></li><li><Link to="/profile"><i class="fas fa-cog fa-1x"></i></Link></li> </ul>
+                    : <ul class="header-reg"><li><NavLink to="/login">Login</NavLink></li><li><NavLink to="/register">Sign-Up</NavLink></li></ul>
+                }
+            
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>

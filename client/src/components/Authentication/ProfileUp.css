@@ -1,0 +1,33 @@
+.nav-update{
+    margin: 40px auto;
+    font-family: 'Chango', cursive;
+    color: #D17B1D;
+}
+
+
+
+.nav-update form {
+    display: grid;
+    width: 23%;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    color: #D17B1D;
+    margin: 40px auto;
+}
+
+
+.nav-update a{
+    text-decoration: none;
+    color:ivory;
+  }
+  
+
+.update-description{
+    font-size: 22px;
+    line-height: 2;
+}
+
+.nav-update form label{
+    font-size: 28px;
+}
