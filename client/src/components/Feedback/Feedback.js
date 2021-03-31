@@ -10,7 +10,7 @@ const Feedback = () => {
                     <legend>FINISH US!</legend>
                     <label htmlFor="description">Feedback</label>
                     <textarea></textarea>
-
+                    <input type="submit" value="Send"/>
                 </fieldset>
 
             </form>

@@ -46,6 +46,9 @@ form > input[type=submit]:nth-child(5):active{
   background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
 }
 
+form input:focus{
+  border: 5px solid #FEC940 ;
+}
 
 .nav-login form label {
     color: #FEC940;

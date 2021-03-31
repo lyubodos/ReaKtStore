@@ -5,14 +5,14 @@ let baseUrl = "http://localhost:5000/games";
 
 export const getAll = (category = '') =>{
 
-
     baseUrl += (category && category !== "all")
     ? `?category=${category}`
     : "";
 
     return fetch(baseUrl)
         .then(res => res.json())
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
+        .finally(res => category = "");
 
 }
 

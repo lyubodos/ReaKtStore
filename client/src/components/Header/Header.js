@@ -20,7 +20,7 @@ function Header() {
 
         try {
             await logout();
-            history.push("/login");
+            history.push("/");
         } catch {
             setError("Failed to log out");
         }
@@ -55,9 +55,11 @@ function Header() {
             
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/catalog">Katalog</NavLink></li>
-                    <li><NavLink to="/offers">Best Offers</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    {currentUser 
+                    ?  <li><NavLink to="/offers">Best Offers</NavLink></li>
+                    :  ""}
                     <li><NavLink to="/contacts">Kontants</NavLink></li>
                 </ul>
             </nav>
