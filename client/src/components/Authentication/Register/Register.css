@@ -17,8 +17,12 @@
 .nav-register a{
     text-decoration: none;
     color:ivory;
-  }
-  
+}
+
+.nav-register form input:focus{
+    border: 5px solid #73ac36 ;
+}
+
 
 .reg-description{
     font-size: 22px;

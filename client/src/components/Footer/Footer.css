@@ -1,4 +1,6 @@
 footer{
+    display: flex;
+    justify-content: space-between;
     background: #CB3F3F;
     color: #482600;
     padding: 10px;
@@ -9,5 +11,8 @@ footer{
 footer a{
     text-decoration: none;
     color: white;
-    
+}
+
+.site-version{
+    color: white;
 }

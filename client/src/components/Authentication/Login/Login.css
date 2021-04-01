@@ -41,12 +41,20 @@ form > input[type=submit]:nth-child(5){
     top: 30%;
   }
 
+
+  .nav-login input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
   
 form > input[type=submit]:nth-child(5):active{
   background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
 }
 
-form input:focus{
+.nav-login form input:focus{
   border: 5px solid #FEC940 ;
 }
 
