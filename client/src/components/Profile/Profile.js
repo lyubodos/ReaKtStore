@@ -1,11 +1,12 @@
-import "./Profile.css"
+import "./Profile.css";
+
 
 export default function Profile() {
     return (
         <div className="profile">
             
 
-                <h1>John Doe</h1>
+                <h1>Lyubodos</h1>
                 <p class="profile-title">Title:</p>
                 <p>Occupation:</p>
                 <a href="#"><i class="fa fa-dribbble"></i></a>

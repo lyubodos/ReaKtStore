@@ -59,9 +59,7 @@ function Catalog(
         
     // }    
 
-
-    console.log(match);
-   
+console.log(games);
         return (
        
             <section className="catalog">

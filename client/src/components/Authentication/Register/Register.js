@@ -1,7 +1,7 @@
 import "./Register.css";
 
 import {useRef, useState} from "react";
-import { useAuth} from "../AuthContext";
+import { useAuth } from "../AuthContext";
 
 import {Link , useHistory} from "react-router-dom";
 import Notification from "../../Shared/Notification";
@@ -30,12 +30,15 @@ const Register = () => {
         try{
         setError('');
         setLoading(true);
+
           await signup(emailRef.current.value, passRef.current.value);
+          
           history.push("/catalog");
 
         } catch {
-            setError('Failed to create an account')
+            setError('Failed to create an account');
         }   
+
         setLoading(false)
     }   
     
@@ -49,9 +52,10 @@ const Register = () => {
 
         <form onSubmit={submitHandler}>
             <label htmlFor="email">E-mail</label>
-            <input type="email" name="email" ref={emailRef} id=""/>
+            <input type="email" name="email" ref={emailRef}/>
+        
             <label htmlFor="password">Password</label>
-            <input type="password" name="password"  ref={passRef} id=""/>
+            <input type="password" name="password"  ref={passRef}/>
             <label htmlFor="repeatPassword">Repeat Password</label>
             <input type="password" name="repeatPassword" ref={rePassRef} id="loginPassword"/>
           

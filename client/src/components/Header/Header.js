@@ -15,9 +15,8 @@ function Header() {
     const history = useHistory();
 
     async function logoutHandler(){
-
         setError('');
-
+        console.log(currentUser);
         try {
             await logout();
             history.push("/");
@@ -26,23 +25,25 @@ function Header() {
         }
     }
 
-    // function profileHandler(){
+    function profileHandler(){
        
-    //     setError('');
+        setError('');
 
-    //     try{
-    //         history.push("/profile");
-    //     } catch {
-    //         setError("Failed to log into settings page");
-    //     }
-    // }
+        try{
+            history.push("/profile");
+        } catch {
+            setError("Failed to log into settings page");
+        }
+    }
 
+    // const segment = currentUser.email.search("_" || "@");
+    // const username = currentUser.email.slice(0, segment);
 
 
     return (
         <header class="header">
             <div className="header-wlc"> 
-                {currentUser ? <h3>Welcome, {currentUser.email}</h3> : ""}
+                {currentUser ? <h3 className="wlc-title">Welcome, {currentUser.email}</h3> : ""}
                 <h1 class="header-title">ReaKt Store</h1>
             </div>
 

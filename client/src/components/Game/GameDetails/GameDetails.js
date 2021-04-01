@@ -5,18 +5,32 @@ import { Link } from "react-router-dom"
 
 import * as gamesService from "../../../services/GamesService";
 import ButtonTemp from "../../Shared/Button"
-
+import { useAuth } from "../../Authentication/AuthContext";
+import Reviews from "../../Reviews";
 
 
 const GameDetails = ({
     match
 }) => {
+
+
     let [game, setGame] = useState({});
+    let [reviews, setReviews] = useState([]);
+    
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         gamesService.getOne(match.params.gameId)
-            .then(res => setGame(res));
+            .then(res => {
+                setReviews(res.reviews)
+                setGame(res)
+            });
+            
     }, [match]);
+
+    
+    console.log(game);
+    console.log(reviews);
 
     return (
         <section className="details">
@@ -35,8 +49,13 @@ const GameDetails = ({
 
                     <div className="details-tabs-el">
                     <Link>Reviews</Link>
-                    <p>This game is awesome</p>
-                    <ButtonTemp>Leave a review</ButtonTemp>
+                    {reviews.map(x => 
+                        <Reviews className="review" key={x.userId} {...x}/>
+                    )}
+               
+                    {currentUser 
+                    ? <ButtonTemp>Leave a review</ButtonTemp>
+                    : ""}
                     </div>
                 </div>
             </div>
