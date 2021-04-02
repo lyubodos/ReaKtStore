@@ -24,6 +24,7 @@ import ForgotPassword from "./components/Authentication/ForgotPassword";
 import ProfileUp from "./components/Authentication/ProfileUp";
 import Profile from "./components/Profile";
 import ShoppingCart from "./components/ShoppingCart/";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 
 function App() {
@@ -57,7 +58,8 @@ function App() {
 
         <Route path="/suggestgame" component={SuggestGame}></Route>
         <Route path="/feedback" component={Feedback}></Route>
-      
+
+        <Route component={PageNotFound}/>
       </Switch>
 
       </AuthProv>

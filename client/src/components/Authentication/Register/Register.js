@@ -12,7 +12,7 @@ const Register = () => {
     const emailRef = useRef();
     const passRef = useRef();
     const rePassRef = useRef();
-    const userRef = userRef();
+  
 
     const { signup, currentUser} = useAuth();
     const [error, setError] = useState('');
@@ -26,19 +26,20 @@ const Register = () => {
         if(passRef.current.value !== rePassRef.current.value){
             return setError('Passwords do not match');
         }
+
         try{
         setError('');
         setLoading(true);
 
           await signup(emailRef.current.value, passRef.current.value);
-          
+
           history.push("/catalog");
 
         } catch {
             setError('Failed to create an account');
         }   
 
-        setLoading(false)
+        setLoading(false);
     }   
     
     return(
@@ -52,6 +53,7 @@ const Register = () => {
         <form onSubmit={submitHandler}>
             <label htmlFor="email">E-mail</label>
             <input type="email" name="email" ref={emailRef}/>
+    
         
             <label htmlFor="password">Password</label>
             <input type="password" name="password"  ref={passRef}/>
