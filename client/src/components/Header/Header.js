@@ -50,7 +50,10 @@ function Header() {
             <nav>
                 {
                     currentUser 
-                    ? <ul class="header-reg"><li><NavLink onClick={logoutHandler} to="/">Logout</NavLink></li><li><Link to="/profile"><i class="fas fa-cog fa-1x"></i></Link></li> </ul>
+                    ? <ul class="header-reg"><li><NavLink onClick={logoutHandler} to="/">Logout</NavLink></li>
+                    <li><Link to="/profile"><i class="fas fa-cog fa-1x"></i></Link></li> 
+                    <li><Link to="/cart"><i class="fas fa-shopping-cart"></i></Link></li>
+                    </ul>
                     : <ul class="header-reg"><li><NavLink to="/login">Login</NavLink></li><li><NavLink to="/register">Sign-Up</NavLink></li></ul>
                 }
             

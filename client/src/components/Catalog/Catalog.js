@@ -2,10 +2,12 @@ import "./Catalog.css";
 
 import * as gamesService from "../../services/GamesService"
 import CatalogNav from "./CatalogNav";
-import Game from "../Game"
+import Game from "../Game";
 
 
-import { Component, useState, useEffect} from "react"
+import { Component, useState, useEffect} from "react";
+import firebase from "firebase";
+
 
 
 function Catalog(
@@ -16,13 +18,26 @@ function Catalog(
 
     const [category, setCategory] = useState("all");
     const [games, setGames] = useState([]);
+    const [cart, setCart] = useState([]);
 
 
-    useEffect(()=>{
+    // useEffect(()=>{
+    //     gamesService.getAll(category)
+    //     .then(res => setGames(res))
+    // },  [category]);
 
-        gamesService.getAll(category)
-        .then(res => setGames(res))
-    }, [category]);
+
+    useEffect(() =>{
+        const fetchData = async() => {
+            const db = firebase.firestore();
+            const data = await db.collection("games").get()
+
+            setGames(data.docs.map(doc => doc.data()))
+        }
+
+        fetchData();
+    }, [])
+
 
     // constructor(props) {
     //     super(props)
@@ -60,22 +75,21 @@ function Catalog(
     // }    
 
 console.log(games);
-        return (
-       
+
+    return (
             <section className="catalog">
                 <CatalogNav />
                 <h1>All Games</h1>
 
                 <div className="games">
                 {
-                        games.map(x => 
-                            <Game key={x.id} {...x} />
-                        )
+                    games.map(x => 
+                        <Game key={x.id} {...x} />
+                    )
                 }
                 </div>
             </section>
-        );
- 
+    );
 }
 
 export default Catalog;

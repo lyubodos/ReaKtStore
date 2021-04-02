@@ -40,11 +40,40 @@
 }   
 
 .details button{
-    margin: 20px auto;
+    box-shadow: 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+    cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 34px;
+    margin: 20px 10px;
 }
-kground-color:#ffab23;
+
+.details button:active{
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
 
 
 .details i{
     margin-left: 5px;
+}
+
+.review-section{
+    margin-top: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-section textarea{
+    font-size: 18px;
+}
+
+.img-wrapper p:nth-child(2){
+    font-size: 25px;
 }

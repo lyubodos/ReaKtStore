@@ -3,7 +3,7 @@ import "./ButtonTemp.css"
 
 const ButtonTemp = ({children}) =>{
     return(
-        <button className="btn-temp">{children}</button>
+        <button   className="btn-temp">{children}</button>
     );
 }
 

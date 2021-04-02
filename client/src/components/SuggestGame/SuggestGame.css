@@ -43,6 +43,10 @@ legend{
     margin: 20px auto;
 }
 
+.suggest-game form input:focus, textarea:focus{
+	border: 5px solid #5BAE52 ;
+  }
+
 
 .btn-suggest:active{
 	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);

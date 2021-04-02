@@ -1,10 +1,10 @@
 import "./GameDetails.css"
 
-import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom"
+import { useEffect, useState} from 'react';
+import { Link, useHistory } from "react-router-dom";
+
 
 import * as gamesService from "../../../services/GamesService";
-import ButtonTemp from "../../Shared/Button"
 import { useAuth } from "../../Authentication/AuthContext";
 import Reviews from "../../Reviews";
 
@@ -16,11 +16,15 @@ const GameDetails = ({
 
     let [game, setGame] = useState({});
     let [reviews, setReviews] = useState([]);
-    
+
     const { currentUser } = useAuth();
 
+    const gameId = match.params.gameId;
+    const history = useHistory();
+
+
     useEffect(() => {
-        gamesService.getOne(match.params.gameId)
+        gamesService.getOne(gameId)
             .then(res => {
                 setReviews(res.reviews)
                 setGame(res)
@@ -28,9 +32,25 @@ const GameDetails = ({
             
     }, [match]);
 
-    
-    console.log(game);
-    console.log(reviews);
+
+    function likesHandler(){
+      let newLikes = Number(game.likes) + 1;
+  
+
+      gamesService.likeGame(gameId, newLikes)
+        
+        .then((res => setGame(res)))
+      
+    }
+
+    function checkLoginStatus() {
+
+        console.log("Button pushed!");
+        if(!currentUser){
+            history.push("/register");
+        } 
+    }
+
 
     return (
         <section className="details">
@@ -38,9 +58,13 @@ const GameDetails = ({
             <p>Likes: {game.likes}</p>
 
             <div className="details-wrapper">
-
+                
+                <div className="img-wrapper">
                 <p className="img"><img src={game.imageURL} /></p>
-
+                <p>Price: {game.price}</p>
+                </div>
+                
+              
                 <div className="details-tabs">
                     <div className="details-tabs-el">
                     <Link>Description</Link>
@@ -54,12 +78,27 @@ const GameDetails = ({
                     )}
                
                     {currentUser 
-                    ? <ButtonTemp>Leave a review</ButtonTemp>
+                    ? <div className="review-section">
+                         <textarea></textarea>
+                         <button type="submit">Leave a review</button>
+                        
+                    </div> 
+                   
                     : ""}
                     </div>
                 </div>
             </div>
-            <ButtonTemp className="button">Like<i class="fas fa-hand-rock"></i></ButtonTemp>
+            {currentUser
+            ? 
+            <div>
+            <button  >Add to favourites</button>
+            <button  onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
+            <button  >Buy NOW!</button>
+            </div>
+            : <button onClick={checkLoginStatus} >Buy NOW!</button>}
+            
+          
+            
 
         </section>
     );

@@ -12,6 +12,7 @@ const Register = () => {
     const emailRef = useRef();
     const passRef = useRef();
     const rePassRef = useRef();
+    const userRef = userRef();
 
     const { signup, currentUser} = useAuth();
     const [error, setError] = useState('');
@@ -22,11 +23,9 @@ const Register = () => {
     async function submitHandler(e){
         e.preventDefault();
 
-
         if(passRef.current.value !== rePassRef.current.value){
             return setError('Passwords do not match');
         }
-
         try{
         setError('');
         setLoading(true);
@@ -46,7 +45,7 @@ const Register = () => {
 
         <div className="nav-register">
         {error && <Notification>{error}</Notification>}
-        <h1 className="reg-title">Sign Up NOW!</h1>
+        <h1 className="reg-title">Do not have an account?</h1>
         <p className="reg-description">Make a pact with us providing Your data, which You can make sure that we will protect and not share with 3rd parties!<br></br>Register now and begin your Konquest</p>
         <img  src="https://i.redd.it/fzunfh2r7hj21.png"/>
 
