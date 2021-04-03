@@ -5,7 +5,7 @@ import CatalogNav from "./CatalogNav";
 import Game from "../Game";
 
 
-import { Component, useState, useEffect} from "react";
+import { useState, useEffect} from "react";
 import firebase from "firebase";
 
 
@@ -74,7 +74,6 @@ function Catalog(
         
     // }    
 
-console.log(games);
 
     return (
             <section className="catalog">

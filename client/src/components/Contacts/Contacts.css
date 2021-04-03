@@ -1,7 +1,8 @@
 .contacts{
     text-align: center;
+    font-family: 'Chango', cursive;
+    color: #B18E31;
 }
-
 
 .contacts-wrapper{
     display: flex;
@@ -19,9 +20,55 @@
 
 .contacts li a{
     text-decoration: none;
-    color: wheat
+    color: ivory;
 }
 
 .contacts-mainImg{
     border-radius: 4%;
+}
+
+.contacts-title{
+    font-size: 30px;
+}
+
+.contacts-info-cr *{
+    margin: 5px auto;
+}
+
+
+.contacts-donot{
+    font-size: 22px;
+}
+
+
+.contacts-hq{
+    margin-top: 100px;
+    font-size: 22px;
+}
+
+.contacts-hq-address{
+    color: ivory;
+}
+
+
+.contacts-store{
+    margin-top: 100px;
+    font-size: 22px;
+}
+
+.contacts-store-address{
+    color: ivory;
+}
+
+
+
+.gmap{
+    height: 400px;
+    width: 400px;
+    border-width: 2px;
+
+}
+
+.gmap_canvas{
+    margin-top: 40px;
 }
