@@ -1,0 +1,98 @@
+{
+  "games": [
+    {
+      "id": "5bb0888ee1d66567dc9f62",
+      "title": "Mortal Kombat 11",
+      "description": "Mortal Kombat 11 is a fighting game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment",
+      "imageURL": "https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg",
+      "category": "action",
+      "price": "99.99$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": 18
+    },
+    {
+      "id": "201aqgsf0888ee1d63657dc9f627",
+      "title": "Uncharted 4: A Thief's End",
+      "description": "Uncharted 4: A Thief's End is a 2016 action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment. It is the fourth main entry in the Uncharted series.",
+      "imageURL": "https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/s/9afe636abbe07b7e73ee82a3e0890f32/uncharted-4--a-thief-s-end-ps4-30.jpg",
+      "category": "adventures",
+      "price": "89.99$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": 24
+    },
+    {
+      "id": "qsd21321e1d636567dc9627",
+      "title": "Batman: Arkham Knight",
+      "description": "Batman: Arkham Knight is a 2015 action-adventure game developed by Rocksteady Studios and published by Warner Bros. Interactive Entertainment. Based on the DC Comics superhero Batman, it is the successor to the 2013 video game Batman: Arkham Origins, and the fourth main installment in the Batman: Arkham series",
+      "imageURL": "https://www.bigw.com.au/medias/sys_master/images/images/h9c/h14/12598750937118.jpg",
+      "category": "action",
+      "price": "69.99$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        },
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": "6"
+    },
+    {
+      "id": "5bb0888ee1d63656dc9f627",
+      "title": "Crash Bandicoot",
+      "description": "Crash Bandicoot is a video game franchise, originally developed by Naughty Dog as an exclusive for Sony's PlayStation console and has seen numerous installments created by numerous developers and published on multiple platforms.",
+      "imageURL": "https://images-na.ssl-images-amazon.com/images/I/711m4kewLaL._SX385_.jpg",
+      "category": "adventures",
+      "price": "80.00$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": "20"
+    },
+    {
+      "id": "123b0888ee1656dc9f627",
+      "title": "Pure Chess",
+      "description": "Pure Chess is a chess video game by British developer VooFoo",
+      "imageURL": "https://ps4gamepkgdownload.com/wp-content/uploads/2018/09/Pure-Chess.jpg",
+      "category": "logical",
+      "price": "49.99$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": "5"
+    },
+    {
+      "id": "cvadasd88ee3656dc9f627",
+      "title": "Paranormal Activity: The Lost Soul",
+      "description": "“PARANORMAL ACTIVITY: THE LOST SOUL” immerses you in a terrifying realistic environment with haunting atmosphere, and the need to survive. With very limited guidance, your free-movement enables you to discover the secrets that lie in this house of horror.",
+      "imageURL": "https://i.pinimg.com/originals/02/4f/d4/024fd41fbd23f8144aa5e3da5ed00829.jpg",
+      "category": "horror",
+      "price": "20.00$",
+      "reviews": [
+        {
+          "userId": "1321313123131321123",
+          "comment": "This game is awesome!"
+        }
+      ],
+      "likes": "15"
+    }
+  ]
+}
