@@ -1,18 +1,17 @@
-import "./GameDetails.css"
 
-import { useEffect, useState} from 'react';
-import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase";
+import {useState, useEffect} from "react";
+import { Link, useHistory } from 'react-router-dom';
 
+
+import Reviews from '../../Reviews';
 import * as gamesService from "../../../services/GamesService";
 import { useAuth } from "../../Authentication/AuthContext";
-import Reviews from "../../Reviews";
 
 
-const GameDetails = ({
+export default function OffersDetails({
     match
-}) => {
-
+}) {
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState({});
 
@@ -26,11 +25,10 @@ const GameDetails = ({
     useEffect(() =>{
         const fetchData = async() => {
             const db = firebase.firestore();
-            const data = await db.collection("games").get();
+            const data = await db.collection("offers").get();
             const games = data.docs.map(doc => doc.data());
             const res = games.find(game => game.id === gameId);
            
-
             setGame(res);
             setReviews((res.reviews))
             
@@ -41,23 +39,18 @@ const GameDetails = ({
     }, [match])
 
 
+    
 
-    function likesHandler(){
-      let newLikes = Number(game.likes) + 1;
+    async function likesHandler(){
+    let newLikes = Number(game.likes) + 1;
   
 
+    const db = firebase.firestore();
+    const data = await db.collection("offers").update();
+
       gamesService.likeGame(gameId, newLikes)
-        
         .then((res => setGame(res)))
       
-    }
-
-    function checkLoginStatus() {
-
-        console.log("Button pushed!");
-        if(!currentUser){
-            history.push("/register");
-        } 
     }
 
 
@@ -97,19 +90,10 @@ const GameDetails = ({
                     </div>
                 </div>
             </div>
-            {currentUser
-            ? 
-            <div>
             <button  >Add to favourites</button>
             <button  onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
             <button  >Buy NOW!</button>
-            </div>
-            : <button onClick={checkLoginStatus} >Buy NOW!</button>}
-        
 
         </section>
     );
-};
-
-
-export default GameDetails;
+}

@@ -25,6 +25,7 @@ import ProfileUp from "./components/Authentication/ProfileUp"
 import Profile from "./components/Profile";
 import ShoppingCart from "./components/ShoppingCart/";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
+import OffersDetails from "./components/Offers/OffersDetails";
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
       <Header/>
 
       <Switch>
-        <PrivateRoute path="/offers" component={Offers} />
+        <PrivateRoute path="/offers" exact component={Offers} />
+        <PrivateRoute path="/offers/details/:gameId" component={OffersDetails} />
         <PrivateRoute exact path="/profile" component={Profile}/>
         <PrivateRoute path="/cart" component={ShoppingCart}/>
   

@@ -21,7 +21,7 @@ export default function Reviews({
         }</h2>
         <p>Comment: {comment}</p>
         
-        <style jsx>
+        <style jsx="true">
             {
                 `
                 p{ margin: 6px; }

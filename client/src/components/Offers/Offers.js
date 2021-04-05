@@ -2,43 +2,53 @@ import "./Offers.css";
 
 import CatalogNav from "../Catalog/CatalogNav";
 import Game from "../Game";
+import * as gamesService from "../../services/GamesService";
 
 
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import {Link , NavLink} from 'react-router-dom'
 import firebase from "firebase";
-
+import OffersTemp from "./OffersTemp/OffersTemp";
 
 
 
 export default function Offers() {
 
-    const [offers, setOffers] = useState([]);
+    const [offerGames, setofferGames] = useState([]);
+    const [offer, setOffer] = useState(false);
 
+    
 
     useEffect(() =>{
         const fetchData = async() => {
             const db = firebase.firestore();
             const data = await db.collection("offers").get()
 
-            setOffers(data.docs.map(doc => doc.data()))
+            setofferGames(data.docs.map(doc => doc.data()))
         }
 
         fetchData();
     }, [])
 
 
+
+
+    
     return (
         <section className="offers">
-                    <CatalogNav />
-                <h1>All Games</h1>
+            <CatalogNav />
+            <h1>All Games</h1>
 
-                <div className="offers-games">
+            <div className="offers-games">
+           
                 {
-                    offers.map(x => 
-                    <Game key={x.id} {...x} />
-                    )
-                }
-                </div>
+                    offerGames.map(x => 
+
+                    <OffersTemp key={x.id} {...x} />
+
+                    )}
+            </div>
+            
         </section>
     )
-} 
+}

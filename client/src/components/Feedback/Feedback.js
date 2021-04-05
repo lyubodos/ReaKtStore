@@ -5,11 +5,13 @@ const Feedback = () => {
         <section className="feedback">
             <p>We value Your opinnion and ideas. Therefore we are open to criticism and design/performance ideas which might be implemented in the future versions of this online store.</p>
 
-            <form >
+            <form action="mailto:lyubomir_vasilev199@abv.bg" method="POST" encType="multipart/form-data">
                 <fieldset>
                     <legend>FINISH US!</legend>
                     <label htmlFor="description">Feedback</label>
-                    <textarea></textarea>
+                    <br></br>
+                    <textarea rows='6' cols="60"></textarea>
+                    <br></br>
                     <input type="submit" value="Send"/>
                 </fieldset>
 
