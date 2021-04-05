@@ -14,7 +14,7 @@ export function AuthProv({children}) {
     const [loading, setLoading] = useState(true);
     
     
-    function signup(email, password, username){
+    function signup(email, password){
         auth.createUserWithEmailAndPassword(email, password);
 
     }

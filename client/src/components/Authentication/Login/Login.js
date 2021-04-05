@@ -2,7 +2,7 @@ import "./Login.css"
 import gateImg from "../../../images/mk_gate.jpg";
 
 
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import Notification from "../../Shared/Notification";
@@ -20,6 +20,8 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
+
+
   
 
     async function submitHandler(e){
@@ -28,9 +30,12 @@ const Login = () => {
         try{
         setError('');
         setLoading(true);
-          await login(emailRef.current.value, passRef.current.value);
-          history.push("/catalog")
 
+          await login(emailRef.current.value, passRef.current.value);
+
+          history.push("/catalog");
+
+        
         } catch {
             setError('Failed to sign in')
         }   

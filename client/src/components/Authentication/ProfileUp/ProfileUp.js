@@ -2,9 +2,9 @@ import "./ProfileUp.css";
 
 import {useState, useRef} from 'react';
 import {Link, useHistory } from 'react-router-dom';
-import {useAuth} from "./AuthContext";
+import {useAuth} from "../AuthContext";
 
-import Notification from "../Shared/Notification";
+import Notification from "../../Shared/Notification";
 
 
 export default function ProfileUp() {

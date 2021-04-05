@@ -15,7 +15,7 @@ function Features(){
                 <h4 className="feature-title">
                    Features
                 </h4>
-                <p className="feature-text">Check <a href="">some</a>of our cool features which you can use while you are ordering your game.
+                <p className="feature-text">Check <Link href="">some</Link>of our cool features which you can use while you are ordering your game.
                  </p>
             </article>
             <article className="feature">
@@ -46,11 +46,10 @@ function Features(){
                     24 hour support service
                 </h4>
                 <p className="feature-text">
-                    You can call our 24hr hotline or send us an e-mail  at any time of the day or night. You will receive the best quality of advise and infromation.
+                    You can call our <Link to="/contacts">24hr hotline</Link> or send us an e-mail  at any time of the day or night. You will receive the best quality of advise and infromation.
                 </p>
             </article>
         </section>
-      
     );
 }
 

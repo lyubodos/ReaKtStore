@@ -56,3 +56,9 @@
     height: 330px;
   }
   
+  
+.offers-img{
+  height: 50px;
+  width: 100px;
+  position: absolute;
+}

@@ -1,0 +1,21 @@
+.offers h1{
+    font-family: 'Chango', cursive;
+    font-size: 40px;
+    color: #CC781F;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+  }
+  
+  .offers-games{
+      display: flex;
+      justify-content: start;
+      flex-wrap: wrap;
+      width: 100%;
+      font-family: 'Chango', cursive;
+      color: #C48D51;
+}
+
+
+.offers button a {
+    text-decoration: none;
+    color: white;
+}

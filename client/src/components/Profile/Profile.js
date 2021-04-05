@@ -1,7 +1,9 @@
 import "./Profile.css";
 
 import { useAuth } from "../Authentication/AuthContext";
+import { Link } from "react-router-dom";
 
+import UploadPhoto from "./UploadPhoto"
 
 
 export default function Profile() {
@@ -11,25 +13,21 @@ export default function Profile() {
     return (
         <div className="profile">
             <div className="profile-wrapper">
-                <div className="profile-img">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" />
-                    <div className="btn-wrapper">
-                    <button>Upload photo</button>
-                    <button>Select avatar</button>
+                    <div className="profile-upImg">
+                    <UploadPhoto/>
                     </div>
-               
-                </div>
+                    
                 <div className="profile-info">
                     <h1>Lyubodos</h1>
                     <p class="profile-title">E-mail: {currentUser.email}</p>
                     <p>Status: Member</p>
+                    <Link className="reset-btn" to="/profile-update">Reset Password</Link>
                 </div>
             </div>
 
             <div className="profile-favourites">
                 <h3>Favourite Games:</h3>
                 <div className="favourites-wrapper">
-
                 </div>
             </div>
         </div>

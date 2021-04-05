@@ -12,6 +12,11 @@
     margin: 50px auto;
 }
 
+.reset-btn{
+    text-decoration: none;
+    color: black;
+}
+
 .btn-wrapper{
     display: flex;
     justify-content: space-around;
@@ -19,7 +24,7 @@
     
 }
 
-.btn-wrapper button{
+.btn-wrapper button, .reset-btn{
     box-shadow: 0px 1px 0px 0px #fff6af;
 	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
     border-radius:6px;
@@ -29,20 +34,13 @@
     padding: 5px 8px;
 }
 
-.btn-wrapper button:active{
+.btn-wrapper button:active, .reset-btn:active{
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
 	background-color:#ffab23;
 }
 
-.profile-img{
-    border: 3px solid black;
-    height: 300px;
-    width: 300px;
-}
-.profile-img img{
-    height: inherit;
-    width: inherit;
-}
+
+
 
 .profile-favourites{
     /* flex-grow: 1; */

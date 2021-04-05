@@ -21,7 +21,7 @@ import GameDetails from "./components/Game/GameDetails";
 import Feedback from "./components/Feedback";
 import { AuthProv } from "./components/Authentication/AuthContext";
 import ForgotPassword from "./components/Authentication/ForgotPassword";
-import ProfileUp from "./components/Authentication/ProfileUp";
+import ProfileUp from "./components/Authentication/ProfileUp"
 import Profile from "./components/Profile";
 import ShoppingCart from "./components/ShoppingCart/";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
@@ -38,16 +38,16 @@ function App() {
       <Switch>
         <PrivateRoute path="/offers" component={Offers} />
         <PrivateRoute exact path="/profile" component={Profile}/>
-        <PrivateRoute path="/profile-update" component={ProfileUp}/>
         <PrivateRoute path="/cart" component={ShoppingCart}/>
   
-        
+        <PrivateRoute path="/profile-update" component={ProfileUp}/>
         <Route path="/register" component={Register}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/forgotpassword" component={ForgotPassword}></Route>
-        <Route path="/" exact component={Main}></Route>
-     
+ 
 
+     
+        <Route path="/" exact component={Main}></Route>
        
         <Route path="/catalog" exact component={Catalog}></Route>
         <Route path="/catalog/:category"  component={Catalog}></Route>
