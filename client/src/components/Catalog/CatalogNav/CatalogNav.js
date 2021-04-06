@@ -3,6 +3,9 @@ import "./CatalogNav.css"
 import { NavLink } from "react-router-dom"
 
 const CatalogNav = () => {
+
+    
+
     return(
         <nav className="catalog-categories">
             <ul className="catalog-nav">
@@ -13,7 +16,6 @@ const CatalogNav = () => {
                 <li><NavLink to="/catalog/logical">Logical</NavLink></li>
                 <li><NavLink to="/catalog/other">Other </NavLink></li>
             </ul>
-     
         </nav>
         
     );

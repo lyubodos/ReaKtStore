@@ -15,7 +15,6 @@ export default function OffersDetails({
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState({});
 
-
     const { currentUser } = useAuth();
 
     const gameId = match.params.gameId;
@@ -38,8 +37,6 @@ export default function OffersDetails({
         
     }, [match])
 
-
-    
 
     async function likesHandler(){
     let newLikes = Number(game.likes) + 1;

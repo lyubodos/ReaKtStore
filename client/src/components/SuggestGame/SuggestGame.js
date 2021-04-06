@@ -6,6 +6,8 @@ const SuggestGame = () => {
         e.preventDefault();
         console.log(e.target.title.value);
         console.log(e.target.description.value);
+
+        
     };
 
 
@@ -14,7 +16,7 @@ const SuggestGame = () => {
             <h1>Here You can suggest a new game to be featured in our Katalog</h1>
             <p>After we review Your suggestion , we will take it in consideration and even deploy it as an option for our customers and fans</p>
             <img src="https://sm.ign.com/t/ign_ap/review/m/mortal-kom/mortal-kombat-11-shang-tsung-dlc-review_7755.1200.jpg" />
-            <form>
+            <form action="mailto:lyubomir_vasilev1992@abv.bg" method="POST">
                 <fieldset>
                     <legend>Suggest a New Game</legend>
                     <p className="field">
@@ -56,7 +58,6 @@ const SuggestGame = () => {
                 </fieldset>
             </form>
         </section>
-
     );
 }
 

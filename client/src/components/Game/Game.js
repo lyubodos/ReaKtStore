@@ -10,31 +10,33 @@ import firebase from "firebase";
 const Game = ({
     id,
     title,
+    description,
     likes,
+    category,
     imageURL,
     price,
-    offers
     
 }) => {
 
-    const [cartItems, setCartItems] = useState([]);
-    const [game, setGame] = useState({});
-    const [offer, setOffer] = useState(false);
 
-    const gameRef = document.getElementsByClassName("game");
+    const addToCart = async () =>{
+        const db = firebase.firestore();
 
-
-
-    useEffect(()=>{
-        setOffer(offers)
-    },[])
-        
-
-    const addToCart = () =>{
- 
-        console.log("Buy now button clicked!");
-
-
+        await db.collection("shoppingCart").doc(title).set({
+            id: id,
+            title: title,
+            description: description,
+            imageURL: imageURL,
+            category: category,
+            price: price,
+            reviews: [
+              {
+                userId: "1321313123131321123",
+                comment: "This game is awesome!"
+              }
+            ],
+            likes: likes
+        })
     }
 
 
@@ -44,7 +46,7 @@ const Game = ({
             <h2>{title}</h2>
         
             <img className="game-img" src={imageURL}></img>
-            <button><NavLink to="">Buy Game</NavLink></button>
+            <button><NavLink onClick={addToCart} to="">Buy Game</NavLink></button>
             <button><NavLink to={`/games/details/${id}`}>Details</NavLink></button>
             <p>Likes: {likes}</p>
             <p>Price: {price}</p>

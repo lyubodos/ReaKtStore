@@ -16,12 +16,14 @@ function Catalog(
     }
 ){
 
-    const [category, setCategory] = useState("all");
+    const [category, setCategory] = useState("");
     const [games, setGames] = useState([]);
     const [cart, setCart] = useState([]);
 
 
     useEffect(() =>{
+        setCategory("");
+        
         const fetchData = async() => {
             const db = firebase.firestore();
             const data = await db.collection("games").get()

@@ -1,6 +1,6 @@
 import "./Offers.css";
 
-import CatalogNav from "../Catalog/CatalogNav";
+
 import Game from "../Game";
 import * as gamesService from "../../services/GamesService";
 
@@ -36,7 +36,7 @@ export default function Offers() {
     
     return (
         <section className="offers">
-            <CatalogNav />
+        
             <h1>All Games</h1>
 
             <div className="offers-games">

@@ -1,0 +1,20 @@
+.shopping-cart{
+  margin: 40px auto;
+  font-family: 'Chango', cursive;
+  color: #FEC940; 
+}
+
+
+.shopping-cart img {
+    border-radius: 100px;
+}
+
+.shopping-cart-items{
+    
+}
+
+.shopping-cart-total{
+
+    float: right;
+}
+

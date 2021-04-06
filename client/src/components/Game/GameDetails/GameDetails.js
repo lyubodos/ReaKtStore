@@ -41,7 +41,6 @@ const GameDetails = ({
     }, [match])
 
 
-
     function likesHandler(){
       let newLikes = Number(game.likes) + 1;
   
@@ -52,12 +51,30 @@ const GameDetails = ({
       
     }
 
-    function checkLoginStatus() {
 
-        console.log("Button pushed!");
+    async function addToCart() {
+
         if(!currentUser){
             history.push("/register");
-        } 
+        } else{
+            const db = firebase.firestore();
+
+            await db.collection("shoppingCart").doc(game.title).set({
+                id: game.id,
+                title: game.title,
+                description: game.description,
+                imageURL: game.imageURL,
+                category: game.category,
+                price: game.price,
+                reviews: [
+                  {
+                    userId: "1321313123131321123",
+                    comment: "This game is awesome!"
+                  }
+                ],
+                likes: game.likes
+            })
+        }
     }
 
 
@@ -102,11 +119,9 @@ const GameDetails = ({
             <div>
             <button  >Add to favourites</button>
             <button  onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
-            <button  >Buy NOW!</button>
+            <button  onClick={addToCart}>Buy NOW!</button>
             </div>
-            : <button onClick={checkLoginStatus} >Buy NOW!</button>}
-        
-
+            : <button onClick={addToCart} >Buy NOW!</button>}
         </section>
     );
 };
