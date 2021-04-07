@@ -6,29 +6,42 @@ import firebase from 'firebase';
 import ShoppingTemp from "./ShoppingTemp";
 import * as gameService from "../../services/GamesService";
 
-
+import ButtonTemp from "../Shared/Button"
+import { useAuth } from "../Authentication/AuthContext";
 
 export default function ShoppingCart(
 
 ) {
     const [cartItems, setCartItems] = useState([]);
+    const {currentUser} = useAuth();
+
     let totalCost = 0;
+    
+  
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const db = firebase.firestore();
-    //         const data = await db.collection("shoppingCart").get()
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const data = await db.collection("shoppingCart").get()
 
-    //         setCartItems(data.docs.map(doc => doc.data()));
-    //     }
+           const games = data.docs.map(doc => doc.data());
+           
+           const currentGames = [];
+            
+           games.forEach(game => game.reference.forEach(ref =>{
+               if(ref === currentUser.uid) currentGames.push(game)
+            }))
+          
+            setCartItems(currentGames);
+        }
+
+        fetchData();
+
+    }, []);
 
 
-    //     fetchData();
-    // }, [cartItems]);
 
-
-
-    //Local back-end in case firebase-connection outage scenariois
+    /*Local back-end in case firebase-connection outage scenariois
     useEffect(() => {
         fetch("http://localhost:5000/basket")
         .then(res => res.json())
@@ -37,19 +50,21 @@ export default function ShoppingCart(
     }, [cartItems]);
 
 
-
+ 
+/ ==================== Capsule End =================== */
 
     cartItems.forEach(item => {
         console.log(item.price);
         let purePrice = item.price.slice(0, 4);
-      
-        totalCost += Number(purePrice)*item.copies;
+
+        totalCost += Number(purePrice) * item.copies;
     });
+
 
     return (
         <section className="shopping-cart">
             <div className="">
-                 <h3 className="shopping-cart-total">Current Total Cost: {totalCost.toFixed(2)}$ </h3>
+                <h3 className="shopping-cart-total">Current Total Cost: {totalCost.toFixed(2)}$ </h3>
                 <h1 className="shopping-cart-items">Items</h1>
 
             </div>
@@ -68,6 +83,9 @@ export default function ShoppingCart(
                         )
                     }
                 </div>
+            </div>
+            <div>
+                <ButtonTemp>Check Out!</ButtonTemp>
             </div>
         </section>
     )
