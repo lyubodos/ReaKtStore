@@ -13,7 +13,8 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": 22
+      "likes": 23,
+      "offers": false
     },
     {
       "id": "201aqgsf0888ee1d63657dc9f627",
@@ -28,7 +29,8 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": 26
+      "likes": 29,
+      "offers": false
     },
     {
       "id": "qsd21321e1d636567dc9627",
@@ -47,7 +49,8 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": "6"
+      "likes": 17,
+      "offers": false
     },
     {
       "id": "5bb0888ee1d63656dc9f627",
@@ -62,7 +65,8 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": "20"
+      "likes": "20",
+      "offers": false
     },
     {
       "id": "123b0888ee1656dc9f627",
@@ -77,7 +81,8 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": "5"
+      "likes": 8,
+      "offers": false
     },
     {
       "id": "cvadasd88ee3656dc9f627",
@@ -92,7 +97,34 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": "15"
+      "likes": "15",
+      "offers": false
+    }
+  ],
+  
+  "offers": [
+      
+  ],
+  "basket": [
+    {
+      "id": "qsd21321e1d636567dc9627",
+      "title": "Batman: Arkham Knight",
+      "description": "Batman: Arkham Knight is a 2015 action-adventure game developed by Rocksteady Studios and published by Warner Bros. Interactive Entertainment. Based on the DC Comics superhero Batman, it is the successor to the 2013 video game Batman: Arkham Origins, and the fourth main installment in the Batman: Arkham series",
+      "imageURL": "https://www.bigw.com.au/medias/sys_master/images/images/h9c/h14/12598750937118.jpg",
+      "category": "action",
+      "price": "69.99$",
+      "likes": "6",
+      "copies": 3
+    },
+    {
+      "id": "123b0888ee1656dc9f627",
+      "title": "Pure Chess",
+      "description": "Pure Chess is a chess video game by British developer VooFoo",
+      "imageURL": "https://ps4gamepkgdownload.com/wp-content/uploads/2018/09/Pure-Chess.jpg",
+      "category": "logical",
+      "price": "49.99$",
+      "likes": "5",
+      "copies": 1
     }
   ]
 }

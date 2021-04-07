@@ -42,6 +42,7 @@ const Register = () => {
         setLoading(false);
     }   
     
+
     return(
 
         <div className="nav-register">

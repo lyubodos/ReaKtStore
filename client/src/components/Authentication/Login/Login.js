@@ -37,7 +37,8 @@ const Login = () => {
 
         
         } catch {
-            setError('Failed to sign in')
+            setError('Failed to sign in');
+            passRef.current.value = "";
         }   
         setLoading(false)
     }  

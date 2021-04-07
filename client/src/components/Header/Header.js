@@ -8,7 +8,6 @@ import "./Header.css";
 import admin from "firebase-admin";
 
 
-
 function Header() {
 
     const { logout, currentUser } = useAuth();
@@ -30,7 +29,6 @@ function Header() {
 
 
 
-
     // useEffect(() => {
     //     if(currentUser){
     //         return;
@@ -44,7 +42,7 @@ function Header() {
     // const segment = currentUser.email.search("_" || "@");
     // const username = currentUser.email.slice(0, segment);
 
-
+    console.log(currentUser);
     return (
         <header class="header">
             <div className="header-wlc">

@@ -27,6 +27,16 @@ export const getOne = (gameId) => {
     .catch(err => console.log(err));
 }
 
+export const createGame = (game) => {
+    return fetch(`http://localhost:5000/basket`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(game)
+        });
+}
+
 
 export const likeGame = (gameId, likes) =>{
     return fetch(`${baseUrl}/${gameId}`, {
@@ -40,18 +50,35 @@ export const likeGame = (gameId, likes) =>{
 }
 
 
-// export const leaveReview = (gameId, reviews) =>{
-//     return fetch(`${baseUrl}/${gameId}`, {
-//         method: "POST",
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//             reviews:{
-//                 userId: reviews.userId,
-//                 comment:
-//             }
-//         })
-//     })
-//     .then((res => res.json()));
-// }
+
+export const leaveReview = (gameId, game) =>{
+    return fetch(`${baseUrl}/${gameId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(game)
+    })
+    .then((res => res.json()));
+}
+
+
+
+export const addCopie = (gameId, copies) =>{
+    return fetch(`http://localhost:5000/basket/${gameId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({copies})
+    })
+}
+
+export const deleteItem = (gameId) =>{
+    return fetch(`http://localhost:5000/basket/${gameId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+}
