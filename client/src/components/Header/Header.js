@@ -42,7 +42,7 @@ function Header() {
     // const segment = currentUser.email.search("_" || "@");
     // const username = currentUser.email.slice(0, segment);
 
-    console.log(currentUser);
+ 
     return (
         <header class="header">
             <div className="header-wlc">

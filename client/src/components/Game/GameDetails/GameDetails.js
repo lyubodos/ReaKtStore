@@ -15,6 +15,9 @@ const GameDetails = ({
 
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState({});
+    const [liked, setLike] = useState(false)
+    const [currentIds, setCurrentIds] = useState([]);
+
 
     const { currentUser } = useAuth();
 
@@ -31,23 +34,68 @@ const GameDetails = ({
             const games = data.docs.map(doc => doc.data());
             const res = games.find(game => game.id === gameId);
 
+
             setGame(res);
+            setCurrentIds(res.userIds)
             setReviews((res.reviews))
 
         }
 
         fetchData();
 
-    }, [gameId]);
+    }, []);
 
 
+    function checkLike(){
+        setCurrentIds(game.userIds);
 
+        currentIds.forEach(id =>{
+            if(id === currentUser.uid) setLike(true)
+        })
 
-    function likesHandler() {
+        return liked;
+    }
+
+    async function likesHandler() {
+
         let newLikes = Number(game.likes) + 1;
 
-        gamesService.likeGame(gameId, newLikes)
-            .then(res => setGame(res));
+        currentIds.push(currentUser.uid);
+
+        checkLike();
+        console.log(liked);
+        if(liked){
+            setGame(game);
+        } else {
+            const db = firebase.firestore();
+            return await db.collection("games").doc(game.title).update(
+                {
+                    likes: newLikes,
+                    userIds: currentIds
+                }
+            ).then(setLike(true))
+        }
+        
+    }
+
+    async function unlikeHandler() {
+
+        let newLikes = Number(game.likes) - 1;
+
+        let indexOfId = currentIds.indexOf(currentUser.uid);
+        currentIds.splice(indexOfId, indexOfId - 1);
+
+        const db = firebase.firestore();
+
+        return await db.collection("games").doc(game.title).update(
+            {
+                likes: newLikes,
+                userIds: currentIds
+            }
+        )
+
+     
+
     }
 
     function reviewHandler() {
@@ -56,8 +104,6 @@ const GameDetails = ({
 
 
     async function addToCart() {
-
-
 
         if (!currentUser) {
             history.push("/register");
@@ -71,7 +117,8 @@ const GameDetails = ({
                 category: game.category,
                 price: game.price,
                 likes: game.likes,
-                copies: 1
+                copies: 1,
+                reference: [currentUser.uid]
 
             }
 
@@ -79,40 +126,53 @@ const GameDetails = ({
                 .then(history.push("/cart"));
         }
     }
+    console.log(game);
 
     /*Local back-end in case of firebase-connection outage scenariois
-    
+
+
+
+
     useEffect(() => {
-        gamesService.getOne(gameId)
+
+        gamesService.getOne("games",gameId)
             .then(res => {
-            setGame(res)
-            setReviews(res.reviews)
-        })
-    
-    }, [gameId]);
-    
-    
-    // const addToCart = () => {
-    
-    //     let currentGame = {
-    //         id: game.id,
-    //         title: game.title,
-    //         description: game.description,
-    //         imageURL: game.imageURL,
-    //         category: game.category,
-    //         price: game.price,
-    //         likes: game.likes,
-    //         copies: 1
-    //     }
-    
-    //    gamesService.createGame(currentGame)
-    //    .then(history.push("/cart"));
-    // }
-    
-    
+                console.log(res);
+                setCurrentIds(res.userIds);
+                
+                currentIds.forEach(userId => {
+                    if (currentUser.uid === userId) {
+                        setLike(true);
+                    }
+                })
+
+                setGame(res)
+                setReviews(res.reviews)
+            })
+
+    }, []);
+
+
+    const addToCart = () => {
+
+        let currentGame = {
+            id: game.id,
+            title: game.title,
+            description: game.description,
+            imageURL: game.imageURL,
+            category: game.category,
+            price: game.price,
+            likes: game.likes,
+            copies: 1,
+            reference: [currentUser.uid]
+        }
+
+        gamesService.createGame(currentGame)
+            .then(history.push("/cart"));
+    }
+
+
     // ==================== Capsule End ==================== */
-
-
 
     return (
         <section className="details">
@@ -154,10 +214,12 @@ const GameDetails = ({
                 ?
                 <div>
                     <button  >Add to favourites</button>
-                    <button onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
+                    <button onClick={likesHandler} disabled={liked}>Like<i class="fas fa-hand-rock"></i></button>
                     <button onClick={addToCart}>Buy NOW!</button>
                 </div>
                 : <button onClick={addToCart} >Buy NOW!</button>}
+                
+      
         </section>
     );
 };

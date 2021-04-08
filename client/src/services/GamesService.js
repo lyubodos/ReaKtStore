@@ -5,24 +5,25 @@ import firebase from 'firebase';
 
 let baseUrl = "http://localhost:5000/games";
 
+let url =  "http://localhost:5000";
 
-export const getAll = (category = '') => {
 
-    baseUrl += (category && category !== "all")
-        ? `?category=${category}`
-        : "";
+export const getAll = (path) => {
 
-    return fetch(baseUrl)
+    // baseUrl += (category && category !== "all")
+    //     ? `?category=${category}`
+    //     : "";
+
+    return fetch(`${url}/${path}`)
         .then(res => res.json())
         .catch(err => console.log(err))
-        .finally(res => category = "");
 
 }
 
 
-export const getOne = (gameId) => {
+export const getOne = (path, gameId) => {
 
-    return fetch(`${baseUrl}/${gameId}`)
+    return fetch(`${url}/${path}/${gameId}`)
         .then(res => res.json())
         .catch(err => console.log(err));
 }
@@ -38,13 +39,13 @@ export const createGame = (game) => {
 }
 
 
-export const likeGame = (gameId, likes) => {
+export const likeGame = (gameId,  userIds) => {
     return fetch(`${baseUrl}/${gameId}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ likes })
+        body: JSON.stringify({userIds})
     })
         .then((res => res.json()))
 }
@@ -74,6 +75,18 @@ export const addCopie = (gameId, copies) => {
     })
 }
 
+
+
+export const addUserId = (gameId, reference) => {
+    return fetch(`http://localhost:5000/basket/${gameId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({reference})
+    })
+}
+
 export const deleteItem = (gameId) => {
     return fetch(`http://localhost:5000/basket/${gameId}`, {
         method: "DELETE",
@@ -87,6 +100,5 @@ export const deleteItem = (gameId) => {
 export const addGameToCart = async (game) => {
     const db = firebase.firestore();
 
-    return await db.collection("shoppingCart").doc(game.title).set(game)
-
+    return await db.collection("shoppingCart").doc(game.title).set(game);
 }

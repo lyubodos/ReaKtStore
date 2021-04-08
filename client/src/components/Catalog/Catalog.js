@@ -33,16 +33,16 @@ function Catalog(
 
 
 
-    //Local back-end in firebase-connection outage scenariois
+    /*Local back-end in firebase-connection outage scenariois
 
-    // useEffect(() =>{
+    useEffect(() => {
 
-    //     gamesService.getAll(category)
-    //     .then(res => setGames(res))
-    // }, [category]);
+        gamesService.getAll("games")
+        .then(res => setGames(res))
+    }, []);
 
 
-    // ==================== Capsule End ==================== //
+    // ==================== Capsule End ==================== */
 
 
     return (

@@ -1,4 +1,4 @@
-import "./Game.css"
+import "./Game.css";
 
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useHistory } from 'react-router-dom';
@@ -19,10 +19,15 @@ const Game = ({
 
 }) => {
 
-    const {currentUser} = useAuth();
+    const { currentUser } = useAuth();
+    const history = useHistory();
+    const [cart, setCart] = useState([]);
+
 
     const addToCart = async () => {
         const db = firebase.firestore();
+
+
 
         await db.collection("shoppingCart").doc(title).set({
             id: id,
@@ -35,12 +40,13 @@ const Game = ({
             copies: 1,
             reference: [currentUser.uid]
         })
+        .then(history.push("/cart"))
+
     }
 
 
 
-    //Local back-end in case of firebase-connection outage scenariois
-    // const history = useHistory();
+    /*Local back-end in case of firebase-connection outage scenariois
 
     //     return fetch(`http://localhost:5000/basket`, {
     //         method: "POST",
@@ -53,21 +59,43 @@ const Game = ({
 
     // }
 
-
-    // const addToCart = () => {
-
-    //     let game = {
-    //         id: id,
-    //         title: title,
-    //         description: description,
-    //         imageURL: imageURL,
-    //         price: price,
-    //         likes: likes,
-    //         copies: 1
-    //     }
+    useEffect(() => {
+        gamesService.getAll("basket")
+        .then(res => setCart(res))
+    }, [])
 
 
-    // ==================== Capsule End ==================== //
+    const addToCart = () => {
+
+        let game = {
+            id: id,
+            title: title,
+            description: description,
+            imageURL: imageURL,
+            price: price,
+            likes: likes,
+            copies: 1,
+            reference: [currentUser.uid]
+        }
+
+        console.log(cart);
+       
+       
+        cart.forEach(sh => {
+            if(sh.title === title){
+                let cartUserIds = sh.reference;
+                cartUserIds.push(currentUser.uid)
+
+                gamesService.addUserId(id, cartUserIds)
+                .then(history.push("/cart"))
+            }
+        })
+
+
+        return gamesService.createGame(game)
+            .then(history.push("/cart"))
+    }
+    // ==================== Capsule End ==================== */
 
 
     return (

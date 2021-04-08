@@ -1,5 +1,5 @@
 
-import { Route, Switch} from "react-router-dom";
+import { Router, Route, Switch} from "react-router-dom";
 
 
 import Header from "./components/Header";
@@ -37,6 +37,7 @@ function App() {
       <Header/>
 
       <Switch>
+
         <PrivateRoute path="/offers" exact component={Offers} />
         <PrivateRoute path="/offers/details/:gameId" component={OffersDetails} />
         <PrivateRoute exact path="/profile" component={Profile}/>
@@ -62,6 +63,7 @@ function App() {
         <Route path="/feedback" component={Feedback}></Route>
 
         <Route component={PageNotFound}/>
+     
       </Switch>
 
       </AuthProv>

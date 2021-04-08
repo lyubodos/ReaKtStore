@@ -43,11 +43,28 @@ export default function OffersDetails({
   
 
     const db = firebase.firestore();
-    const data = await db.collection("offers").update();
+    const data = await db.collection("offers").doc(game.title).update();
 
       gamesService.likeGame(gameId, newLikes)
         .then((res => setGame(res)))
       
+    }
+
+    const addToCart = async () =>{
+ 
+        const db = firebase.firestore();
+
+        await db.collection("shoppingCart").doc(game.title).set({
+            id: game.id,
+            title:  game.title,
+            imageURL:  game.imageURL,
+            price:  game.price,
+            likes:  game.likes,
+            copies: 1,
+            reference: [currentUser.uid]
+        }).then(history.push("/cart"))
+       
+
     }
 
 
@@ -89,7 +106,7 @@ export default function OffersDetails({
             </div>
             <button  >Add to favourites</button>
             <button  onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
-            <button  >Buy NOW!</button>
+            <button  onClick={addToCart}>Buy NOW!</button>
 
         </section>
     );

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import firebase from "firebase";
 
 import * as gameService from "../../../services/GamesService"
+import { useAuth } from '../../Authentication/AuthContext';
 
 
 export default function ShoppingTemp({
@@ -11,17 +12,27 @@ export default function ShoppingTemp({
     title,
     imageURL,
     price,
-    copies
+    copies,
+    reference
 }) {
 
 
+    const history = useHistory();
+    const { currentUser } = useAuth();
+
+    const [cart, setCart] = useState([]);
+
+    
     const addCopie = async () => {
         const db = firebase.firestore();
 
         await db.collection("shoppingCart").doc(title).update({
             copies: (copies + 1)
-        });
+        })
+        .then(history.push("/cart"))
+        
     }
+
 
     const removeCopie = async () => {
         const db = firebase.firestore();
@@ -32,41 +43,73 @@ export default function ShoppingTemp({
             return deleteItem();
         }
 
-        return await db.collection("shoppingCart").doc(title).update({ copies: decrementedCopies });
+        return await db.collection("shoppingCart").doc(title).update({ copies: decrementedCopies })
+       
     }
 
     const deleteItem = async () => {
         const db = firebase.firestore();
 
-        await db.collection("shoppingCart").doc(title).delete();
+        await db.collection("shoppingCart").doc(title).delete()
+       
     }
 
 
-    /*Local back-end in case of firebase-connection outage scenariois
-    
-        function deleteItem (){
-            gameService.deleteItem(id);
-        }
-    
-    
-        function addAnotherCopy(){
-    
-            let incrementedCopies = copies + 1
-            
-            return gameService.addCopie(id, incrementedCopies)
-           
-        }
-    
-        function removeCopie(){
-            let decrementedCopies = copies - 1;
-    
-            if(decrementedCopies < 1){
-                return  gameService.deleteItem(id);
+
+    /*Local back-end in case of firebase-connection outage scenariois//
+
+    useEffect(() => {
+        gameService.getAll("basket")
+            .then(res => setCart(res))
+    }, [])
+
+
+
+    function deleteItem() {
+
+        cart.forEach(sh => {
+            if (sh.title === title) {
+                let cartUserIds = sh.reference;
+
+                let decrement = cartUserIds.indexOf(currentUser.uid)
+                console.log(decrement);
+
+                cartUserIds.splice(decrement, decrement-1)
+                console.log(cartUserIds)
+                gameService.addUserId(id, cartUserIds)
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.reference.length === 0) {
+                            gameService.deleteItem(id);
+                        }
+                    })
+                    .then(history.push("/cart"))
             }
-    
-            return gameService.addCopie(id, decrementedCopies);
+
+
+        })
+
+    }
+
+
+    function addAnotherCopy() {
+
+        let incrementedCopies = copies + 1
+
+        return gameService.addCopie(id, incrementedCopies)
+
+    }
+
+    function removeCopie() {
+        let decrementedCopies = copies - 1;
+
+        if (decrementedCopies < 1) {
+            return gameService.deleteItem(id);
         }
-    
+
+        return gameService.addCopie(id, decrementedCopies);
+    }
+
     // ==================== Capsule End ==================== */
 
 

@@ -4,17 +4,23 @@
   color: #FEC940; 
 }
 
+.no-items{
+  display: inline-block;
+  text-align: center;
+}
 
-.shopping-cart img {
+.no-items-img {
     border-radius: 100px;
+    opacity: 60%;
 }
 
 .shopping-cart-items{
-    
+    font-size: 30px;
 }
 
 .shopping-cart-total{
-
+    color: wheat;
     float: right;
+    margin-right: 20px;
 }
 

@@ -15,9 +15,7 @@ import OffersTemp from "./OffersTemp/OffersTemp";
 export default function Offers() {
 
     const [offerGames, setofferGames] = useState([]);
-    const [offer, setOffer] = useState(false);
 
-    
 
     useEffect(() =>{
         const fetchData = async() => {
