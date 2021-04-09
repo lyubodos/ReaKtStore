@@ -14,12 +14,25 @@ export default function OffersDetails({
 }) {
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState({});
+    const [currentIds, setCurrentIds] = useState([]);
+    const [liked, setLike] = useState(false)
 
     const { currentUser } = useAuth();
 
     const gameId = match.params.gameId;
     const history = useHistory();
 
+    let currentGame = {
+        id: game.id,
+        title:  game.title,
+        description: game.description,
+        category: game.category,
+        imageURL:  game.imageURL,
+        price:  game.price,
+        likes:  game.likes,
+        copies: 1,
+        reference: [currentUser.uid]
+    }
 
     useEffect(() =>{
         const fetchData = async() => {
@@ -35,34 +48,57 @@ export default function OffersDetails({
 
         fetchData();
         
-    }, [match])
+    }, [game])
 
 
-    async function likesHandler(){
-    let newLikes = Number(game.likes) + 1;
-  
+    function checkLike(){
+        setCurrentIds(game.userIds);
 
-    const db = firebase.firestore();
-    const data = await db.collection("offers").doc(game.title).update();
+        currentIds.forEach(id =>{
+            if(id === currentUser.uid) setLike(true)
+        })
 
-      gamesService.likeGame(gameId, newLikes)
-        .then((res => setGame(res)))
-      
+        return liked;
     }
+
+
+    async function likesHandler() {
+
+        let newLikes = Number(game.likes) + 1;
+
+        currentIds.push(currentUser.uid);
+
+        checkLike();
+    
+        if(liked){
+            setGame(game);
+        } else {
+            const db = firebase.firestore();
+            return await db.collection("offers").doc(game.title).update(
+                {
+                    likes: newLikes,
+                    userIds: currentIds
+                }
+            ).then(setLike(true))
+        }
+        
+    }
+
+        
+    const addFavs = async () => {
+        const db = firebase.firestore();
+
+        await db.collection("favourites").doc(game.title).set(currentGame)
+        .then(history.push("/profile"));
+    }
+      
 
     const addToCart = async () =>{
  
         const db = firebase.firestore();
 
-        await db.collection("shoppingCart").doc(game.title).set({
-            id: game.id,
-            title:  game.title,
-            imageURL:  game.imageURL,
-            price:  game.price,
-            likes:  game.likes,
-            copies: 1,
-            reference: [currentUser.uid]
-        }).then(history.push("/cart"))
+        await db.collection("shoppingCart").doc(game.title).set(currentGame)
+        .then(history.push("/cart"))
        
 
     }
@@ -104,8 +140,8 @@ export default function OffersDetails({
                     </div>
                 </div>
             </div>
-            <button  >Add to favourites</button>
-            <button  onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
+            <button  onClick={addFavs}>Add to favourites</button>
+            <button  onClick={likesHandler} disabled={liked}>Like<i class="fas fa-hand-rock"></i></button>
             <button  onClick={addToCart}>Buy NOW!</button>
 
         </section>

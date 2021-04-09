@@ -26,6 +26,19 @@ const GameDetails = ({
 
     const commentRef = useRef();
 
+    let currentGame = {
+        id: game.id,
+        title: game.title,
+        description: game.description,
+        imageURL: game.imageURL,
+        category: game.category,
+        price: game.price,
+        likes: game.likes,
+        copies: 1,
+        reference: [currentUser.uid]
+
+    }
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -78,28 +91,18 @@ const GameDetails = ({
         
     }
 
-    async function unlikeHandler() {
-
-        let newLikes = Number(game.likes) - 1;
-
-        let indexOfId = currentIds.indexOf(currentUser.uid);
-        currentIds.splice(indexOfId, indexOfId - 1);
-
-        const db = firebase.firestore();
-
-        return await db.collection("games").doc(game.title).update(
-            {
-                likes: newLikes,
-                userIds: currentIds
-            }
-        )
-
-     
-
-    }
 
     function reviewHandler() {
         gamesService.leaveReview();
+    }
+
+    
+    const addFavs = async () => {
+        const db = firebase.firestore();
+
+
+        await db.collection("favourites").doc(game.title).set(currentGame)
+        .then(history.push("/profile"));
     }
 
 
@@ -109,24 +112,12 @@ const GameDetails = ({
             history.push("/register");
         } else {
 
-            let currentGame = {
-                id: game.id,
-                title: game.title,
-                description: game.description,
-                imageURL: game.imageURL,
-                category: game.category,
-                price: game.price,
-                likes: game.likes,
-                copies: 1,
-                reference: [currentUser.uid]
-
-            }
+     
 
             return gamesService.addGameToCart(currentGame)
                 .then(history.push("/cart"));
         }
     }
-    console.log(game);
 
     /*Local back-end in case of firebase-connection outage scenariois
 
@@ -213,7 +204,7 @@ const GameDetails = ({
             {currentUser
                 ?
                 <div>
-                    <button  >Add to favourites</button>
+                    <button onClick={addFavs} >Add to favourites</button>
                     <button onClick={likesHandler} disabled={liked}>Like<i class="fas fa-hand-rock"></i></button>
                     <button onClick={addToCart}>Buy NOW!</button>
                 </div>

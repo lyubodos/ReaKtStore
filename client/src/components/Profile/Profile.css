@@ -40,8 +40,13 @@
 }
 
 
+.favourites-wrapper{
+   display: flex;
+    flex-direction: column;
+}
 
-
-.profile-favourites{
-    /* flex-grow: 1; */
+.no-Favs{
+    margin: 20px auto;
+    border-radius: 25px;
+    opacity: 70%;
 }

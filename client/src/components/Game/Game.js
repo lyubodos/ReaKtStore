@@ -21,26 +21,25 @@ const Game = ({
 
     const { currentUser } = useAuth();
     const history = useHistory();
-    const [cart, setCart] = useState([]);
+
+    let defaultGame = {
+        id: id,
+        title: title,
+        description: description,
+        imageURL: imageURL,
+        category: category,
+        price: price,
+        likes: likes,
+        copies: 1,
+        reference: [currentUser.uid]
+    }
 
 
     const addToCart = async () => {
         const db = firebase.firestore();
 
-
-
-        await db.collection("shoppingCart").doc(title).set({
-            id: id,
-            title: title,
-            description: description,
-            imageURL: imageURL,
-            category: category,
-            price: price,
-            likes: likes,
-            copies: 1,
-            reference: [currentUser.uid]
-        })
-        .then(history.push("/cart"))
+        await db.collection("shoppingCart").doc(title).set({ defaultGame })
+            .then(history.push("/cart"))
 
     }
 
