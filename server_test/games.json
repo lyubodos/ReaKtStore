@@ -13,8 +13,13 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": 23,
-      "offers": false
+      "likes": 9,
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2",
+        "MC3xGsL2ftX1QiKBxYakMsnMfRq1",
+        "72eIAVTgJAY92om5uMG7QIa8Sqf2"
+      ]
     },
     {
       "id": "201aqgsf0888ee1d63657dc9f627",
@@ -29,8 +34,12 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": 29,
-      "offers": false
+      "likes": 14,
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2",
+        "MC3xGsL2ftX1QiKBxYakMsnMfRq1"
+      ]
     },
     {
       "id": "qsd21321e1d636567dc9627",
@@ -49,8 +58,11 @@
           "comment": "This game is awesome!"
         }
       ],
-      "likes": 17,
-      "offers": false
+      "likes": 1,
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2"
+      ]
     },
     {
       "id": "5bb0888ee1d63656dc9f627",
@@ -66,7 +78,10 @@
         }
       ],
       "likes": "20",
-      "offers": false
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2"
+      ]
     },
     {
       "id": "123b0888ee1656dc9f627",
@@ -82,7 +97,10 @@
         }
       ],
       "likes": 8,
-      "offers": false
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2"
+      ]
     },
     {
       "id": "cvadasd88ee3656dc9f627",
@@ -98,33 +116,63 @@
         }
       ],
       "likes": "15",
-      "offers": false
+      "offers": false,
+      "userIds": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2"
+      ]
     }
   ],
-  
-  "offers": [
-      
-  ],
+  "offers": [],
   "basket": [
     {
-      "id": "qsd21321e1d636567dc9627",
-      "title": "Batman: Arkham Knight",
-      "description": "Batman: Arkham Knight is a 2015 action-adventure game developed by Rocksteady Studios and published by Warner Bros. Interactive Entertainment. Based on the DC Comics superhero Batman, it is the successor to the 2013 video game Batman: Arkham Origins, and the fourth main installment in the Batman: Arkham series",
-      "imageURL": "https://www.bigw.com.au/medias/sys_master/images/images/h9c/h14/12598750937118.jpg",
-      "category": "action",
-      "price": "69.99$",
-      "likes": "6",
-      "copies": 3
+      "id": "5bb0888ee1d66567dc9f62",
+      "title": "Mortal Kombat 11",
+      "description": "Mortal Kombat 11 is a fighting game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment",
+      "imageURL": "https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/o/ea943466f69866303f88a523efd1ad15/mortal-kombat-11-ps4-30.jpg",
+      "price": "99.99$",
+      "likes": 9,
+      "copies": 1,
+      "reference": [
+        "72eIAVTgJAY92om5uMG7QIa8Sqf2",
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2",
+        "MC3xGsL2ftX1QiKBxYakMsnMfRq1"
+      ]
+    },
+    {
+      "id": "5bb0888ee1d63656dc9f627",
+      "title": "Crash Bandicoot",
+      "description": "Crash Bandicoot is a video game franchise, originally developed by Naughty Dog as an exclusive for Sony's PlayStation console and has seen numerous installments created by numerous developers and published on multiple platforms.",
+      "imageURL": "https://images-na.ssl-images-amazon.com/images/I/711m4kewLaL._SX385_.jpg",
+      "price": "80.00$",
+      "likes": "20",
+      "copies": 2,
+      "reference": [
+        "MC3xGsL2ftX1QiKBxYakMsnMfRq1"
+      ]
+    },
+    {
+      "id": "201aqgsf0888ee1d63657dc9f627",
+      "title": "Uncharted 4: A Thief's End",
+      "description": "Uncharted 4: A Thief's End is a 2016 action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment. It is the fourth main entry in the Uncharted series.",
+      "imageURL": "https://cdn.ozone.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/s/9afe636abbe07b7e73ee82a3e0890f32/uncharted-4--a-thief-s-end-ps4-30.jpg",
+      "price": "89.99$",
+      "likes": 14,
+      "copies": 2,
+      "reference": [
+        "RLJijFvnrHOAEVmVgGFS9kQyjiN2"
+      ]
     },
     {
       "id": "123b0888ee1656dc9f627",
       "title": "Pure Chess",
       "description": "Pure Chess is a chess video game by British developer VooFoo",
       "imageURL": "https://ps4gamepkgdownload.com/wp-content/uploads/2018/09/Pure-Chess.jpg",
-      "category": "logical",
       "price": "49.99$",
-      "likes": "5",
-      "copies": 1
+      "likes": 8,
+      "copies": 1,
+      "reference": [
+        "MC3xGsL2ftX1QiKBxYakMsnMfRq1"
+      ]
     }
   ]
 }
