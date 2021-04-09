@@ -1,0 +1,65 @@
+.checkout{
+    font-family: "M PLUS 1p", sans-serif;
+    color: #CB3F3F;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}   
+
+.checkout p{
+    font-size: 20px;
+}
+
+.checkout-games{
+    color:ivory;
+}
+
+
+.checkout-games{
+    list-style-type: none;
+}
+
+select, label{
+    font-size: 20px;
+}
+
+.checkout form{
+    margin-top: 30px;
+}
+
+.checkout form > input[type=submit]{
+    box-shadow: 0px 1px 0px 0px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 34px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+    position: relative;
+    top: 20%;
+}
+
+.checkout form > input[type=submit]:active{
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+
+}
+
+.payment-img{
+    margin: 60px auto;
+}
+
+.payment-nav button{
+   margin: 30px;
+}
+
+.payment-nav a{
+    text-decoration: none;
+    font-family: 'Chango', cursive;
+}

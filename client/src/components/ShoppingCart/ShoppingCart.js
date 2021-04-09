@@ -10,6 +10,7 @@ import * as gameService from "../../services/GamesService";
 
 import ButtonTemp from "../Shared/Button"
 import { useAuth } from "../Authentication/AuthContext";
+import { NavLink } from "react-router-dom";
 
 
 export default function ShoppingCart(
@@ -95,7 +96,7 @@ export default function ShoppingCart(
                 </div>
             </div>
             {cartItems.length > 0 
-            ? <ButtonTemp>Check Out!</ButtonTemp>
+            ? <NavLink className="checkout-btn" to="/checkout">Check Out!</NavLink>
             : ""}
             <div>
                

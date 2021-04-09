@@ -17,10 +17,10 @@ export default function ShoppingTemp({
 }) {
 
 
+    
     const history = useHistory();
     const { currentUser } = useAuth();
 
-    const [cart, setCart] = useState([]);
 
     
     const addCopie = async () => {
@@ -29,7 +29,7 @@ export default function ShoppingTemp({
         await db.collection("shoppingCart").doc(title).update({
             copies: (copies + 1)
         })
-        .then(history.push("/cart"))
+        
         
     }
 
@@ -119,8 +119,8 @@ export default function ShoppingTemp({
 
             <img className="game-img" src={imageURL}></img>
             <button><NavLink onClick={addCopie} to="/cart">Add another Copy</NavLink></button>
-            <button><NavLink onClick={removeCopie} to="/cart">Remove Copy</NavLink></button>
-            <button><NavLink onClick={deleteItem} to="/cart">Remove from Cart</NavLink></button>
+            <button><NavLink onClick={removeCopie} to="cart">Remove Copy</NavLink></button>
+            <button><NavLink onClick={deleteItem} to="cart">Remove from Cart</NavLink></button>
 
             <p>Price: {price}</p>
             <p>Copies: {copies}</p>

@@ -56,7 +56,7 @@ const GameDetails = ({
 
         fetchData();
 
-    }, []);
+    }, [game]);
 
 
     function checkLike(){

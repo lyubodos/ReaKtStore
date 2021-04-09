@@ -7,7 +7,7 @@ const Contacts = () => {
         <section className="contacts">
             <h1>Get Over Here to our physical store!
             </h1>
-            <img className="contacts-mainImg" src="https://static2.cbrimages.com/wordpress/wp-content/uploads/2020/10/mortal-kombat-11-ultimate-feature-header.jpg" />
+            <img className="contacts-mainImg" src="http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/5fd0dba528178304112d5a44/1607590856020/Mortal-Kombat-11-Ultimate-1-1140x570.jpg?format=1500w" />
             <p>If You want to visit our physical store You can find it's location on the map below or You can contact us from the provided e-mail or phone number(s)D</p>
             <p className="contacts-donot">Do not hesitate and get over to us NOW!</p>
 

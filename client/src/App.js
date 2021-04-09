@@ -1,5 +1,5 @@
 
-import { Router, Route, Switch} from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 
 
 import Header from "./components/Header";
@@ -15,7 +15,6 @@ import About from "./components/About"
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
-
 import SuggestGame from "./components/SuggestGame/";
 import GameDetails from "./components/Game/GameDetails";
 import Feedback from "./components/Feedback";
@@ -26,6 +25,7 @@ import Profile from "./components/Profile";
 import ShoppingCart from "./components/ShoppingCart/";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import OffersDetails from "./components/Offers/OffersDetails";
+import Checkout from "./components/Checkout";
 
 
 function App() {
@@ -40,16 +40,15 @@ function App() {
 
         <PrivateRoute path="/offers" exact component={Offers} />
         <PrivateRoute path="/offers/details/:gameId" component={OffersDetails} />
-        <PrivateRoute exact path="/profile" component={Profile}/>
+        <PrivateRoute path="/profile" exact component={Profile}/>
         <PrivateRoute path="/cart" component={ShoppingCart}/>
-  
+        <PrivateRoute path="/checkout" component={Checkout}/>
         <PrivateRoute path="/profile-update" component={ProfileUp}/>
+
         <Route path="/register" component={Register}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/forgotpassword" component={ForgotPassword}></Route>
  
-
-     
         <Route path="/" exact component={Main}></Route>
        
         <Route path="/catalog" exact component={Catalog}></Route>

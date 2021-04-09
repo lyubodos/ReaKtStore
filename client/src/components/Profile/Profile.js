@@ -37,7 +37,6 @@ export default function Profile() {
     }, [favourites]);
 
 
-
     return (
         <div className="profile">
             <div className="profile-wrapper">

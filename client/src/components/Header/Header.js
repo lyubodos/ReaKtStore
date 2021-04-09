@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
-import { auth } from "../../firebase";
 import { useAuth } from "../Authentication/AuthContext";
 import Notification from "../Shared/Notification";
 import "./Header.css";
-
-import admin from "firebase-admin";
 
 
 function Header() {
