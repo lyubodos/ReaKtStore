@@ -16,18 +16,18 @@ export default function ShoppingTemp({
     reference
 }) {
 
-
-    
     const history = useHistory();
+
     const { currentUser } = useAuth();
 
+    let decrementedCopies = copies - 1;
+    let incrementedCopies = copies + 1;
 
-    
     const addCopie = async () => {
         const db = firebase.firestore();
 
         await db.collection("shoppingCart").doc(title).update({
-            copies: (copies + 1)
+            copies: (incrementedCopies)
         })
         
         
@@ -37,8 +37,6 @@ export default function ShoppingTemp({
     const removeCopie = async () => {
         const db = firebase.firestore();
 
-        let decrementedCopies = copies - 1;
-
         if (decrementedCopies < 1) {
             return deleteItem();
         }
@@ -47,11 +45,11 @@ export default function ShoppingTemp({
        
     }
 
+    
     const deleteItem = async () => {
         const db = firebase.firestore();
 
         await db.collection("shoppingCart").doc(title).delete()
-       
     }
 
 

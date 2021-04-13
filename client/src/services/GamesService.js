@@ -8,11 +8,9 @@ let baseUrl = "http://localhost:5000/games";
 let url =  "http://localhost:5000";
 
 
-export const getAll = (path) => {
+//Fetching data from local db start
 
-    // baseUrl += (category && category !== "all")
-    //     ? `?category=${category}`
-    //     : "";
+export const getAll = (path) => {
 
     return fetch(`${url}/${path}`)
         .then(res => res.json())
@@ -39,16 +37,17 @@ export const createGame = (game) => {
 }
 
 
-export const likeGame = (gameId,  userIds) => {
+export const likeGame = (gameId, likes, userIds) => {
     return fetch(`${baseUrl}/${gameId}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({userIds})
+        body: JSON.stringify({likes, userIds})
     })
         .then((res => res.json()))
 }
+
 
 
 
@@ -96,6 +95,11 @@ export const deleteItem = (gameId) => {
     })
 }
 
+
+//Fetching data from local db end
+
+
+//Adding a new game to the firestore db 
 
 export const addGameToCart = async (game) => {
     const db = firebase.firestore();

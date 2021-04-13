@@ -6,13 +6,14 @@ import * as gamesService from "../../services/GamesService";
 
 
 import { useState, useEffect } from "react";
-import {Link , NavLink} from 'react-router-dom'
 import firebase from "firebase";
 import OffersTemp from "./OffersTemp/OffersTemp";
 
 
 
-export default function Offers() {
+export default function Offers({
+    match
+}) {
 
     const [offerGames, setofferGames] = useState([]);
 
@@ -26,9 +27,7 @@ export default function Offers() {
         }
 
         fetchData();
-    }, [])
-
-
+    }, [match])
 
 
     

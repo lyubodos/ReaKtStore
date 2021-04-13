@@ -20,16 +20,15 @@ export default function Checkout() {
             const db = firebase.firestore();
             const data = await db.collection("shoppingCart").get()
 
-            const games = data.docs.map(doc => doc.data());
-
             const currentGames = [];
 
+            const games = data.docs.map(doc => doc.data());
 
             games.forEach(game => game.reference.forEach(ref => {
                 if (ref === currentUser.uid) currentGames.push(game)
             }))
 
-            setCart(currentGames);
+            setCart(currentGames);        
         }
 
         fetchData();
@@ -79,7 +78,7 @@ export default function Checkout() {
 
             <img className="payment-img" src="https://www.destructoid.com//ul/535012-mk%2011.jpg" />
             <div class="payment-nav">
-                <ButtonTemp><NavLink to="/cart">Back to cart</NavLink></ButtonTemp>
+                <ButtonTemp><NavLink to="/cart">Back to Cart</NavLink></ButtonTemp>
                 <ButtonTemp><NavLink to="/catalog">Back to Catalog</NavLink></ButtonTemp>
                 <ButtonTemp><NavLink to="/profile">Back to Profile</NavLink></ButtonTemp>
             </div>

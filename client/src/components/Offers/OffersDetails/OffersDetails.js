@@ -38,17 +38,18 @@ export default function OffersDetails({
         const fetchData = async() => {
             const db = firebase.firestore();
             const data = await db.collection("offers").get();
+
             const games = data.docs.map(doc => doc.data());
             const res = games.find(game => game.id === gameId);
            
+            console.log(res);
             setGame(res);
             setReviews((res.reviews))
-            
         }
 
         fetchData();
         
-    }, [game])
+    }, [match])
 
 
     function checkLike(){

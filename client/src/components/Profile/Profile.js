@@ -1,21 +1,30 @@
 import "./Profile.css";
 
 import { useAuth } from "../Authentication/AuthContext";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import firebase from 'firebase';
 
 import UploadPhoto from "./UploadPhoto"
 import Favourites from "../Favourites";
+import Loading from "../Shared/Loading";
 
 
-export default function Profile() {
+export default function Profile({
+    match
+}) {
 
     const { currentUser } = useAuth();
     const [favourites, setFavs] = useState([]);
+    const [loading, setLoading] = useState(false);
+    
+
+    const favsRef = useRef();
 
 
     useEffect(() => {
+        setLoading(true);
+
         const fetchData = async () => {
             const db = firebase.firestore();
             const data = await db.collection("favourites").get()
@@ -29,16 +38,23 @@ export default function Profile() {
             }))
 
             console.log(currentGames);
+            setLoading(false);
             setFavs(currentGames);
         }
 
-        fetchData();
+        return fetchData();
 
-    }, [favourites]);
+    }, [favsRef.current]);
 
 
+
+console.log(favsRef);
     return (
         <div className="profile">
+            {loading
+            ?  <Loading/>
+            : ""}
+           
             <div className="profile-wrapper">
                 <div className="profile-upImg">
                     <UploadPhoto />
@@ -52,7 +68,7 @@ export default function Profile() {
                 </div>
             </div>
 
-            <div className="profile-favourites">
+            <div ref={favsRef} className="profile-favourites">
                 <h3>Favourite Games:</h3>
                 {favourites.length === 0 && 
                 <div>

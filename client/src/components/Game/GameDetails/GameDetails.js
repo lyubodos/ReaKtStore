@@ -1,22 +1,24 @@
 import "./GameDetails.css"
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase";
 
 import * as gamesService from "../../../services/GamesService";
 import { useAuth } from "../../Authentication/AuthContext";
 import Reviews from "../../Reviews";
+import LikeProv from "../Game"
+import Loading from "../../Shared/Loading";
 
 
 const GameDetails = ({
     match
 }) => {
 
+    const [review, setReview] = useState({});
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState({});
-    const [liked, setLike] = useState(false)
-    const [currentIds, setCurrentIds] = useState([]);
+    const [loading, setLoading] = useState(false);
 
 
     const { currentUser } = useAuth();
@@ -26,19 +28,6 @@ const GameDetails = ({
 
     const commentRef = useRef();
 
-    let currentGame = {
-        id: game.id,
-        title: game.title,
-        description: game.description,
-        imageURL: game.imageURL,
-        category: game.category,
-        price: game.price,
-        likes: game.likes,
-        copies: 1,
-        reference: [currentUser.uid]
-
-    }
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,105 +36,121 @@ const GameDetails = ({
             const games = data.docs.map(doc => doc.data());
             const res = games.find(game => game.id === gameId);
 
-
             setGame(res);
-            setCurrentIds(res.userIds)
             setReviews((res.reviews))
-
         }
 
         fetchData();
 
-    }, [game]);
+    }, []);
 
 
-    function checkLike(){
-        setCurrentIds(game.userIds);
-
-        currentIds.forEach(id =>{
-            if(id === currentUser.uid) setLike(true)
-        })
-
-        return liked;
-    }
-
-    async function likesHandler() {
+   const likesHandler = async () => {
+        setLoading(true);
 
         let newLikes = Number(game.likes) + 1;
 
-        currentIds.push(currentUser.uid);
-
-        checkLike();
-        console.log(liked);
-        if(liked){
-            setGame(game);
-        } else {
             const db = firebase.firestore();
             return await db.collection("games").doc(game.title).update(
                 {
-                    likes: newLikes,
-                    userIds: currentIds
+                    likes: newLikes
                 }
-            ).then(setLike(true))
-        }
-        
+            ).then(setLoading(false))
     }
 
+    async function reviewHandler() {
+        const db = firebase.firestore();
+        
+        let currComment = commentRef.current.value;
 
-    function reviewHandler() {
-        gamesService.leaveReview();
+        setReview({
+            userId: currentUser.email,
+            comment: currComment
+        })
+
+       reviews.push(review)
+       console.log(game);
+       console.log(reviews);
+
+            return await db.collection("games").doc(game.title).update(
+                {
+                reviews
+            })
+            .then( commentRef.current.value = "")
+            
     }
 
     
     const addFavs = async () => {
-        const db = firebase.firestore();
+        let currentGame = {
+            id: game.id,
+            title: game.title,
+            description: game.description,
+            imageURL: game.imageURL,
+            category: game.category,
+            price: game.price,
+            likes: game.likes,
+            copies: 1,
+            reference: [currentUser.uid]
+        }
 
+        const db = firebase.firestore();
 
         await db.collection("favourites").doc(game.title).set(currentGame)
         .then(history.push("/profile"));
     }
 
-
     async function addToCart() {
-
         if (!currentUser) {
             history.push("/register");
         } else {
 
-     
-
+            let currentGame = {
+                id: game.id,
+                title: game.title,
+                description: game.description,
+                imageURL: game.imageURL,
+                category: game.category,
+                price: game.price,
+                likes: game.likes,
+                copies: 1,
+                reference: [currentUser.uid]
+        
+            }
             return gamesService.addGameToCart(currentGame)
                 .then(history.push("/cart"));
         }
     }
 
+
     /*Local back-end in case of firebase-connection outage scenariois
 
 
-
-
     useEffect(() => {
-
-        gamesService.getOne("games",gameId)
+        gamesService.getOne("games", gameId)
             .then(res => {
-                console.log(res);
-                setCurrentIds(res.userIds);
-                
-                currentIds.forEach(userId => {
-                    if (currentUser.uid === userId) {
-                        setLike(true);
-                    }
-                })
-
                 setGame(res)
                 setReviews(res.reviews)
             })
 
-    }, []);
+    }, [match]);
+
+    
+    // const addFavs = async () => {
+    //     const db = firebase.firestore();
+
+
+    //     await db.collection("favourites").doc(game.title).set(currentGame)
+    //     .then(history.push("/profile"));
+    // }
 
 
     const addToCart = () => {
 
+
+        if(!currentUser){
+            history.push("/register")
+        } else{
         let currentGame = {
             id: game.id,
             title: game.title,
@@ -160,13 +165,19 @@ const GameDetails = ({
 
         gamesService.createGame(currentGame)
             .then(history.push("/cart"));
+
+    }
     }
 
 
     // ==================== Capsule End ==================== */
 
     return (
+
         <section className="details">
+            {loading
+            ? <Loading/>
+            : ""}
             <h3>{game.title}</h3>
             <p>Likes: {game.likes}</p>
 
@@ -180,18 +191,19 @@ const GameDetails = ({
 
                 <div className="details-tabs">
                     <div className="details-tabs-el">
-                        <Link>Description</Link>
+                        <Link to="">Description</Link>
                         <p className="description">{game.description}</p>
                     </div>
 
                     <div className="details-tabs-el">
-                        <Link>Reviews</Link>
+                        <Link to="">Reviews</Link>
                         {reviews.map(x =>
                             <Reviews className="review" key={x.userId} {...x} />
                         )}
 
                         {currentUser
                             ? <div className="review-section">
+                                <h5>User: {currentUser.email}</h5>
                                 <textarea ref={commentRef}></textarea>
                                 <button type="submit" onClick={reviewHandler}>Leave a review</button>
 
@@ -205,7 +217,7 @@ const GameDetails = ({
                 ?
                 <div>
                     <button onClick={addFavs} >Add to favourites</button>
-                    <button onClick={likesHandler} disabled={liked}>Like<i class="fas fa-hand-rock"></i></button>
+                    <button onClick={likesHandler}>Like<i class="fas fa-hand-rock"></i></button>
                     <button onClick={addToCart}>Buy NOW!</button>
                 </div>
                 : <button onClick={addToCart} >Buy NOW!</button>}

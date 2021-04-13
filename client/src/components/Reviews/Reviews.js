@@ -6,7 +6,7 @@ import {useAuth} from "../Authentication/AuthContext";
 
 
 export default function Reviews({
-    userId,
+    email,
     comment
 }) {
 
@@ -15,10 +15,7 @@ export default function Reviews({
 
     return (
         <div className="revies">
-        <h2>{currentUser 
-        ? currentUser.email
-        : "User"
-        }</h2>
+        <h4>User: {email}</h4>
         <p>Comment: {comment}</p>
         
         <style jsx="true">

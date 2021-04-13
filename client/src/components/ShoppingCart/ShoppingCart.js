@@ -11,12 +11,15 @@ import * as gameService from "../../services/GamesService";
 import ButtonTemp from "../Shared/Button"
 import { useAuth } from "../Authentication/AuthContext";
 import { NavLink } from "react-router-dom";
+import Loading from "../Shared/Loading";
 
 
 export default function ShoppingCart(
-
+match
 ) {
     const [cartItems, setCartItems] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const { currentUser } = useAuth();
 
 
@@ -24,6 +27,8 @@ export default function ShoppingCart(
 
 
     useEffect(() => {
+        setLoading(true)
+
         const fetchData = async () => {
             const db = firebase.firestore();
             const data = await db.collection("shoppingCart").get()
@@ -36,18 +41,22 @@ export default function ShoppingCart(
                if(ref === currentUser.uid) currentGames.push(game)
             }))
 
-            setCartItems(currentGames);
+        setLoading(false)
+        setCartItems(currentGames);
         }
 
-        fetchData();
+        return fetchData();
 
-    }, [cartItems]);
+    }, [match]);
 
 
 
     /*Local back-end in case firebase-connection outage scenariois//
 
     useEffect(() => {
+        const currentGames = [];
+
+
         return fetch("http://localhost:5000/basket")
             .then(res => res.json())
             .then(res => {
@@ -66,7 +75,6 @@ export default function ShoppingCart(
     /* ==================== Capsule End =================== */
 
     cartItems.forEach(item => {
-        console.log(item.price);
         let purePrice = item.price.slice(0, 4);
 
         totalCost += Number(purePrice) * item.copies;
@@ -75,6 +83,9 @@ export default function ShoppingCart(
 
     return (
         <section className="shopping-cart">
+            {loading
+            ? <Loading/>
+            : ""}
             <div className="shopping-cart-main">
                 <h1 className="shopping-cart-items">Items</h1>
                 <h3 className="shopping-cart-total">Current Total Cost: {totalCost.toFixed(2)}$ </h3>

@@ -16,8 +16,6 @@ class UploadPhoto extends Component {
   
     }
 
-
-
     handleUpload = () => {
         const { image } = this.state;
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -66,7 +64,6 @@ class UploadPhoto extends Component {
               <img src={this.state.image} />
               <h1>Choose Your Avatar</h1>
               <input type="file" name="myImage" onChange={this.onImageChange}/>
-              <button onClick={this.handleUpload}> Select from storage</button>
             </div>
       );
     }

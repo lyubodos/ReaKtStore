@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 import Notification from "../../Shared/Notification";
 
 import { useAuth } from "../AuthContext";
+import Loading from "../../Shared/Loading";
 
 const Login = () => {
 
@@ -35,7 +36,6 @@ const Login = () => {
 
             history.push("/catalog");
 
-
         } catch {
             setError('Failed to sign in');
             passRef.current.value = "";
@@ -46,6 +46,9 @@ const Login = () => {
 
     return (
         <div className="nav-login">
+            {loading
+            ? <Loading/>
+            : ""}
             <h1>Log into our realm and begin your journey!</h1>
             {error && <Notification>{error}</Notification>}
             <img src={gateImg} alt="gateImg" />

@@ -81,7 +81,7 @@ export default function ProfileUp() {
                 <input type="submit" value="Update"/>
                 
             </form>
-            <p className="update-link">You have made up Your mind about chanding Your credentials? <Link to="/profle">Cancel</Link></p>
+            <p className="update-link">You have made up Your mind about chanding Your credentials? <Link to="/profile">Cancel</Link></p>
             </div>
     )
 }

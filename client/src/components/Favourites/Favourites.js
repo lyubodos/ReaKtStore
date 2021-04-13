@@ -1,7 +1,7 @@
 import "./Favourites.css";
 
 import React, { useEffect, useState } from 'react';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import firebase from 'firebase';
 import { useAuth } from '../Authentication/AuthContext';
 import Game from '../Game';
@@ -17,7 +17,6 @@ export default function Favourites(
         imageURL,
         price,
         likes,
-        reference
     }
 ) {
 
@@ -25,31 +24,33 @@ export default function Favourites(
     const { currentUser } = useAuth();
 
     const history = useHistory();
-    
+
+    let currentGame = {
+        id: id,
+        title: title,
+        description: description,
+        imageURL: imageURL,
+        category: category,
+        price: price,
+        likes: likes,
+        copies: 1,
+        reference: [currentUser.uid]
+    }
+
     const addToCart = async () => {
         const db = firebase.firestore();
 
-        await db.collection("shoppingCart").doc(title).set({
-            id: id,
-            title: title,
-            description: description,
-            imageURL: imageURL,
-            category: category,
-            price: price,
-            likes: likes,
-            copies: 1,
-            reference: [currentUser.uid]
-        })
-        .then(history.push("/cart"))
+        await db.collection("shoppingCart").doc(title).set(currentGame)
+            .then(res => history.push("/cart"))
 
     }
 
-    
-    const deleteFav = async () =>{
+
+    const deleteFav = async () => {
         const db = firebase.firestore();
-        
+
         await db.collection("favourites").doc(title).delete()
-        
+
     }
 
 
@@ -65,7 +66,7 @@ export default function Favourites(
                 <div className="section-1">
                     <p className="fav-descr">{description}</p>
                 </div>
-           
+
                 <div className="section-2">
                     <button onClick={addToCart}>Buy Now!</button>
                     <button onClick={deleteFav}> Remove from favourites</button>
