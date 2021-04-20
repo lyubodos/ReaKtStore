@@ -25,14 +25,17 @@ const Register = () => {
 
         if(passRef.current.value !== rePassRef.current.value){
             return setError('Passwords do not match');
+        } else if((passRef.current.value || rePassRef.current.value) === ""){
+            return setError('Password fields cannot be empty');
         }
 
         try{
         setError('');
         setLoading(true);
 
-          await signup(emailRef.current.value, passRef.current.value);
-
+          await signup(emailRef.current.value, passRef.current.value)
+          .catch(err => setError(err))
+    
           history.push("/catalog");
 
         } catch {

@@ -109,9 +109,6 @@ match
             {cartItems.length > 0 
             ? <NavLink className="checkout-btn" to="/checkout">Check Out!</NavLink>
             : ""}
-            <div>
-               
-            </div>
         </section>
     )
 }
