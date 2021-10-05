@@ -1,14 +1,18 @@
-.catalog nav {
-
-    width: 50%;
+.catalog-categories{
+    width: 39%;
     margin: 0 auto;
+    
+}
+
+
+.catalog nav > li {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.catalog li{
-    position: relative;
-    margin: 0 36px;
-
+.catalog nav li{
 }
 
 

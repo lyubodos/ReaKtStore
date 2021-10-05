@@ -43,17 +43,16 @@ header{
   }
   
   nav ul li{
-    
+    border-radius: 10px;
+    transition: ease-out 0.5s;
     list-style: none;
     padding: 12px;
     margin: 0 10px;
-    opacity: 60%;
   
   }
   
   nav ul li:hover{
-    background: #E89F16;
-    opacity: 100%;
+    box-shadow: inset 200px 0 0 0 #E89F16;
   }
   
   nav ul li a{
@@ -63,7 +62,6 @@ header{
     
   }
   
-
   nav ul li a:active{
     opacity: 40%;
   }

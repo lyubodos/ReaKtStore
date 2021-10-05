@@ -13,6 +13,7 @@ export default function Checkout() {
     const { currentUser } = useAuth();
 
     const [cart, setCart] = useState([]);
+    
     let totalCost = 0;
 
     useEffect(() => {
