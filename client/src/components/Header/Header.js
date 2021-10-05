@@ -16,6 +16,7 @@ function Header() {
     async function logoutHandler() {
         setError('');
         console.log(currentUser);
+        
         try {
             await logout();
             history.push("/");
