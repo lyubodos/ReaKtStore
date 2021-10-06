@@ -14,7 +14,7 @@ const Register = () => {
     const rePassRef = useRef();
   
 
-    const { signup, currentUser} = useAuth();
+    const {signup, currentUser} = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false)
 
@@ -44,12 +44,18 @@ const Register = () => {
 
         setLoading(false);
     }   
+
+    function timeOutHandler(timer) {
+        setTimeout(() => {
+            setError("");
+        }, timer);
+    }
     
 
     return(
 
         <div className="nav-register">
-        {error && <Notification>{error}</Notification>}
+        {error && <Notification onSubmit={timeOutHandler(2000)}>{error}</Notification>}
         <h1 className="reg-title">Do not have an account?</h1>
         <p className="reg-description">Make a pact with us providing Your data, which You can make sure that we will protect and not share with 3rd parties!<br></br>Register now and begin your Konquest</p>
         <img  src="https://i.redd.it/fzunfh2r7hj21.png"/>
@@ -57,8 +63,7 @@ const Register = () => {
         <form onSubmit={submitHandler}>
             <label htmlFor="email">E-mail</label>
             <input type="email" name="email" ref={emailRef}/>
-    
-        
+            
             <label htmlFor="password">Password</label>
             <input type="password" name="password"  ref={passRef}/>
             <label htmlFor="repeatPassword">Repeat Password</label>

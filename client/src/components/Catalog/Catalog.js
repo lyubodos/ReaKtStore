@@ -52,8 +52,8 @@ function Catalog() {
         <section className="catalog">
             <CatalogNav />
             {loading
-            ?  <Loading/>
-            : ""}
+                ? <Loading />
+                : ""}
             <h1>All Games</h1>
 
             <div className="games">

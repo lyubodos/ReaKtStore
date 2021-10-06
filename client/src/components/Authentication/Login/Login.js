@@ -43,6 +43,12 @@ const Login = () => {
         setLoading(false)
     }
 
+    function timeOutHandler(timer) {
+        setTimeout(() => {
+            setError("");
+        }, timer);
+    }
+
 
     return (
         <div className="nav-login">
@@ -50,7 +56,7 @@ const Login = () => {
             ? <Loading/>
             : ""}
             <h1>Log into our realm and begin your journey!</h1>
-            {error && <Notification>{error}</Notification>}
+            {error && <Notification onSubmit={timeOutHandler(3000)}>{error}</Notification>}
             <img src={gateImg} alt="gateImg" />
 
             <form onSubmit={submitHandler}>

@@ -14,7 +14,7 @@ export default function ProfileUp() {
     const passRef = useRef();
     const rePassRef = useRef();
 
-    const { currentUser, updateEmail, updatePassword} = useAuth();
+    const {currentUser, updateEmail, updatePassword} = useAuth();
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
